@@ -118,10 +118,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
-                <!-- Brand Logo -->
+                <!-- Brand Logo (Atualizada com a imagem recebida) -->
                 <a href="#" onclick="switchMode('b2c'); return false;" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 bg-gradient-to-tr from-brand-blue to-brand-cyan rounded-2xl flex items-center justify-center shadow-lg shadow-brand-blue/30 group-hover:scale-105 transition-transform">
-                        <i data-lucide="network" class="w-6 h-6 text-white"></i>
+                    <div class="w-12 h-12 bg-white rounded-2xl p-1.5 flex items-center justify-center shadow-lg shadow-brand-blue/30 group-hover:scale-105 transition-transform">
+                        <img src="logo_panda-removebg-preview.png" alt="Panda Internet Fibra" class="w-full h-full object-contain">
                     </div>
                     <div class="flex flex-col">
                         <span class="text-2xl font-black tracking-tight text-white flex items-center gap-1">
@@ -467,321 +467,249 @@
                                     <div id="indicator-1" class="w-10 h-10 rounded-full bg-brand-blue text-white font-bold flex items-center justify-center text-sm shadow-md transition-all">
                                         1
                                     </div>
-                                    <span id="label-1" class="text-xs font-bold text-slate-900 mt-2">Velocidade</span>
+                                    <span class="text-xs font-semibold mt-2 text-slate-700">Velocidade</span>
                                 </button>
 
                                 <button id="tab-step-2" onclick="goToStep(2)" class="flex flex-col items-center group focus:outline-none">
                                     <div id="indicator-2" class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center text-sm transition-all">
                                         2
                                     </div>
-                                    <span id="label-2" class="text-xs font-medium text-slate-400 mt-2">Recursos</span>
+                                    <span class="text-xs font-semibold mt-2 text-slate-400">Adicionais</span>
                                 </button>
 
                                 <button id="tab-step-3" onclick="goToStep(3)" class="flex flex-col items-center group focus:outline-none">
                                     <div id="indicator-3" class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center text-sm transition-all">
                                         3
                                     </div>
-                                    <span id="label-3" class="text-xs font-medium text-slate-400 mt-2">Contrato</span>
+                                    <span class="text-xs font-semibold mt-2 text-slate-400">Contrato</span>
                                 </button>
 
                                 <button id="tab-step-4" onclick="goToStep(4)" class="flex flex-col items-center group focus:outline-none">
                                     <div id="indicator-4" class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center text-sm transition-all">
                                         4
                                     </div>
-                                    <span id="label-4" class="text-xs font-medium text-slate-400 mt-2">Confirmação</span>
+                                    <span class="text-xs font-semibold mt-2 text-slate-400">Resumo</span>
                                 </button>
 
                             </div>
+                        </div>
 
-                            <!-- Progress Line -->
-                            <div class="w-full bg-slate-100 h-2 rounded-full mt-4 overflow-hidden">
-                                <div id="step-progress-bar" class="bg-brand-blue h-full w-1/4 transition-all duration-300 ease-out"></div>
+                        <!-- Step 1 Content -->
+                        <div id="step-1-content" class="space-y-6">
+                            <div>
+                                <h2 class="text-xl font-extrabold text-slate-900">1. Escolha a Velocidade Ideal</h2>
+                                <p class="text-xs text-slate-500 mt-1">Selecione a quantidade de Mega garantidos para sua operação.</p>
+                            </div>
+
+                            <div class="grid sm:grid-cols-3 gap-4">
+                                <label class="cursor-pointer border-2 border-brand-blue bg-blue-50/50 rounded-2xl p-4 flex flex-col justify-between hover:border-brand-blue transition">
+                                    <input type="radio" name="speed" value="300" checked class="sr-only" onchange="updateSummary()">
+                                    <div>
+                                        <span class="text-xs font-bold text-brand-blue uppercase">Padrão</span>
+                                        <h3 class="text-xl font-black text-slate-900 mt-1">300 MEGA</h3>
+                                        <p class="text-[11px] text-slate-500 mt-1">Para pequenas equipes e escritórios.</p>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-slate-200/60 font-bold text-slate-900 text-sm">
+                                        R$ 149,90<span class="text-[10px] font-normal text-slate-500">/mês</span>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer border-2 border-slate-200 rounded-2xl p-4 flex flex-col justify-between hover:border-brand-blue transition">
+                                    <input type="radio" name="speed" value="600" class="sr-only" onchange="updateSummary()">
+                                    <div>
+                                        <span class="text-xs font-bold text-emerald-600 uppercase">Recomendado</span>
+                                        <h3 class="text-xl font-black text-slate-900 mt-1">600 MEGA</h3>
+                                        <p class="text-[11px] text-slate-500 mt-1">Para empresas com alto tráfego de dados.</p>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-slate-200/60 font-bold text-slate-900 text-sm">
+                                        R$ 229,90<span class="text-[10px] font-normal text-slate-500">/mês</span>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer border-2 border-slate-200 rounded-2xl p-4 flex flex-col justify-between hover:border-brand-blue transition">
+                                    <input type="radio" name="speed" value="1000" class="sr-only" onchange="updateSummary()">
+                                    <div>
+                                        <span class="text-xs font-bold text-purple-600 uppercase">Ultra Performance</span>
+                                        <h3 class="text-xl font-black text-slate-900 mt-1">1 GIGA (1000M)</h3>
+                                        <p class="text-[11px] text-slate-500 mt-1">Para servidores, VPNs e operação crítica.</p>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-slate-200/60 font-bold text-slate-900 text-sm">
+                                        R$ 399,90<span class="text-[10px] font-normal text-slate-500">/mês</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="pt-4 flex justify-end">
+                                <button onclick="goToStep(2)" class="bg-brand-blue hover:bg-brand-lightBlue text-white font-bold px-6 py-3 rounded-xl text-sm transition flex items-center gap-2">
+                                    <span>Próximo Passo</span>
+                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- STEP 1 CONTENT: VELOCIDADE -->
-                        <div id="step-content-1" class="space-y-6">
+                        <!-- Step 2 Content -->
+                        <div id="step-2-content" class="hidden space-y-6">
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="gauge" class="w-6 h-6 text-brand-blue"></i>
-                                    <h2 class="text-xl font-extrabold text-slate-900">Passo 1: Selecione a Velocidade da Fibra</h2>
-                                </div>
-                                <p class="text-sm text-slate-500 mt-1">Arraste o seletor para escolher a banda necessária para sua operação.</p>
-                            </div>
-
-                            <!-- Speed Gauge Box -->
-                            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-                                <span class="text-xs font-extrabold uppercase tracking-widest text-brand-blue bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-                                    Velocidade Selecionada
-                                </span>
-                                <div class="mt-3 flex items-baseline justify-center gap-2">
-                                    <span id="speed-display-val" class="text-5xl font-black text-slate-900 tracking-tight">600</span>
-                                    <span class="text-2xl font-bold text-brand-blue">MEGA</span>
-                                </div>
-                                <p id="speed-description" class="text-sm font-medium text-slate-600 mt-2 max-w-md mx-auto">
-                                    Ideal para equipes de até 20 colaboradores simultâneos e sistemas em nuvem.
-                                </p>
-                            </div>
-
-                            <!-- Interactive Range Slider -->
-                            <div class="space-y-4 pt-2">
-                                <input type="range" id="speed-slider" min="0" max="3" step="1" value="1" class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-blue focus:outline-none">
-                                
-                                <div class="flex justify-between text-xs font-bold text-slate-500 px-1">
-                                    <span>300M</span>
-                                    <span>600M</span>
-                                    <span>800M</span>
-                                    <span>1000M (1G Dedicado)</span>
-                                </div>
-                            </div>
-
-                            <div class="grid sm:grid-cols-3 gap-3 pt-4 border-t border-slate-100">
-                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 flex items-center gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-                                    Banda Simétrica (1:1 Upload/Download)
-                                </div>
-                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 flex items-center gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-                                    Garantia em Contrato Corporativo
-                                </div>
-                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 flex items-center gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-                                    Ping ultra-baixo e rotas diretas
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- STEP 2 CONTENT: RECURSOS -->
-                        <div id="step-content-2" class="space-y-6 hidden">
-                            <div>
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="layers" class="w-6 h-6 text-brand-blue"></i>
-                                    <h2 class="text-xl font-extrabold text-slate-900">Passo 2: Recursos Adicionais Corporativos</h2>
-                                </div>
-                                <p class="text-sm text-slate-500 mt-1">Selecione os módulos extras para reforçar a segurança e a infraestrutura da sua rede.</p>
-                            </div>
-
-                            <div class="grid sm:grid-cols-2 gap-4">
-                                <!-- Add-on 1: IP Fixo -->
-                                <label class="relative flex items-start p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-blue transition group">
-                                    <input type="checkbox" id="addon-ip" onchange="updateCalculations()" class="mt-1 h-5 w-5 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
-                                    <div class="ml-3">
-                                        <span class="text-sm font-bold text-slate-900 block group-hover:text-brand-blue">IP Fixo IPv4 Exclusivo</span>
-                                        <span class="text-xs text-slate-500 mt-0.5 block">Para servidores locais, sistemas de câmeras CFTV e VPN corporativa.</span>
-                                        <span class="text-xs font-bold text-emerald-600 mt-2 block">+ R$ 50,00/mês</span>
-                                    </div>
-                                </label>
-
-                                <!-- Add-on 2: SLA Garantido 4h -->
-                                <label class="relative flex items-start p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-blue transition group">
-                                    <input type="checkbox" id="addon-sla" onchange="updateCalculations()" class="mt-1 h-5 w-5 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
-                                    <div class="ml-3">
-                                        <span class="text-sm font-bold text-slate-900 block group-hover:text-brand-blue">SLA de Reparo 4 Horas</span>
-                                        <span class="text-xs text-slate-500 mt-0.5 block">Atendimento presencial emergencial 24/7 com tempo de resposta garantido.</span>
-                                        <span class="text-xs font-bold text-emerald-600 mt-2 block">+ R$ 90,00/mês</span>
-                                    </div>
-                                </label>
-
-                                <!-- Add-on 3: Link Backup -->
-                                <label class="relative flex items-start p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-blue transition group">
-                                    <input type="checkbox" id="addon-backup" onchange="updateCalculations()" class="mt-1 h-5 w-5 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
-                                    <div class="ml-3">
-                                        <span class="text-sm font-bold text-slate-900 block group-hover:text-brand-blue">Link Backup Redundante</span>
-                                        <span class="text-xs text-slate-500 mt-0.5 block">Segunda via de conexão com failover automático contra interrupções.</span>
-                                        <span class="text-xs font-bold text-emerald-600 mt-2 block">+ R$ 120,00/mês</span>
-                                    </div>
-                                </label>
-
-                                <!-- Add-on 4: Wi-Fi Corporativo Mesh -->
-                                <label class="relative flex items-start p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-blue transition group">
-                                    <input type="checkbox" id="addon-wifi" onchange="updateCalculations()" class="mt-1 h-5 w-5 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
-                                    <div class="ml-3">
-                                        <span class="text-sm font-bold text-slate-900 block group-hover:text-brand-blue">Wi-Fi 6 Mesh Corporativo</span>
-                                        <span class="text-xs text-slate-500 mt-0.5 block">2 Roteadores Gigabit de alta densidade para escritórios e galpões.</span>
-                                        <span class="text-xs font-bold text-emerald-600 mt-2 block">+ R$ 40,00/mês</span>
-                                    </div>
-                                </label>
-
-                                <!-- Add-on 5: PABX VoIP -->
-                                <label class="relative flex items-start p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-blue transition group sm:col-span-2">
-                                    <input type="checkbox" id="addon-voip" onchange="updateCalculations()" class="mt-1 h-5 w-5 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
-                                    <div class="ml-3">
-                                        <span class="text-sm font-bold text-slate-900 block group-hover:text-brand-blue">Telefonia VoIP / PABX em Nuvem</span>
-                                        <span class="text-xs text-slate-500 mt-0.5 block">Ramais virtuais ilimitados para ligações fixas e móveis da sua equipe.</span>
-                                        <span class="text-xs font-bold text-emerald-600 mt-2 block">+ R$ 60,00/mês</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- STEP 3 CONTENT: CONTRATO -->
-                        <div id="step-content-3" class="space-y-6 hidden">
-                            <div>
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="file-text" class="w-6 h-6 text-brand-blue"></i>
-                                    <h2 class="text-xl font-extrabold text-slate-900">Passo 3: Período de Fidelidade e Isenções</h2>
-                                </div>
-                                <p class="text-sm text-slate-500 mt-1">Escolha a condição contratual que melhor se ajusta ao planejamento da sua empresa.</p>
+                                <h2 class="text-xl font-extrabold text-slate-900">2. Recursos Adicionais Corporativos</h2>
+                                <p class="text-xs text-slate-500 mt-1">Aumente a segurança e estabilidade do seu negócio.</p>
                             </div>
 
                             <div class="space-y-3">
-                                <label class="flex items-center justify-between p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-blue transition">
+                                <label class="flex items-center justify-between p-4 border border-slate-200 rounded-2xl hover:bg-slate-50 cursor-pointer transition">
                                     <div class="flex items-center gap-3">
-                                        <input type="radio" name="contract-period" value="0" onchange="updateCalculations()" class="h-5 w-5 text-brand-blue focus:ring-brand-blue">
+                                        <input type="checkbox" id="addon-ip" onchange="updateSummary()" class="w-5 h-5 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
                                         <div>
-                                            <span class="text-sm font-bold text-slate-900 block">Sem Fidelidade</span>
-                                            <span class="text-xs text-slate-500">Taxa de instalação e ativação técnica: R$ 350,00</span>
+                                            <span class="font-bold text-slate-900 text-sm block">IP Fixo V4 Dedicado</span>
+                                            <span class="text-xs text-slate-500">Ideal para servidores internos, CFTV e acesso remoto seguro.</span>
                                         </div>
                                     </div>
-                                    <span class="text-xs font-bold text-slate-600 bg-slate-200 px-3 py-1 rounded-full">Preço Padrão</span>
+                                    <span class="font-bold text-sm text-slate-900">+ R$ 50,00/mês</span>
                                 </label>
 
-                                <label class="flex items-center justify-between p-4 bg-blue-50/60 border-2 border-brand-blue rounded-2xl cursor-pointer hover:border-brand-blue transition">
+                                <label class="flex items-center justify-between p-4 border border-slate-200 rounded-2xl hover:bg-slate-50 cursor-pointer transition">
                                     <div class="flex items-center gap-3">
-                                        <input type="radio" name="contract-period" value="12" checked onchange="updateCalculations()" class="h-5 w-5 text-brand-blue focus:ring-brand-blue">
+                                        <input type="checkbox" id="addon-sla" onchange="updateSummary()" class="w-5 h-5 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
                                         <div>
-                                            <span class="text-sm font-bold text-slate-900 flex items-center gap-2">
-                                                12 Meses de Fidelidade
-                                                <span class="text-[10px] font-extrabold text-white bg-brand-blue px-2 py-0.5 rounded-full uppercase">Recomendado</span>
-                                            </span>
-                                            <span class="text-xs text-slate-600">Instalação 100% GRÁTIS + 10% de desconto na mensalidade</span>
+                                            <span class="font-bold text-slate-900 text-sm block">SLA Ultra Prioritário (2 Horas)</span>
+                                            <span class="text-xs text-slate-500">Atendimento técnico emergencial garantido em até 2h.</span>
                                         </div>
                                     </div>
-                                    <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">10% OFF</span>
-                                </label>
-
-                                <label class="flex items-center justify-between p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-blue transition">
-                                    <div class="flex items-center gap-3">
-                                        <input type="radio" name="contract-period" value="24" onchange="updateCalculations()" class="h-5 w-5 text-brand-blue focus:ring-brand-blue">
-                                        <div>
-                                            <span class="text-sm font-bold text-slate-900 block">24 Meses de Fidelidade</span>
-                                            <span class="text-xs text-slate-500">Instalação GRÁTIS + Roteador Wi-Fi 6 Mesh grátis + 20% de desconto</span>
-                                        </div>
-                                    </div>
-                                    <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">20% OFF</span>
+                                    <span class="font-bold text-sm text-slate-900">+ R$ 80,00/mês</span>
                                 </label>
                             </div>
-                        </div>
 
-                        <!-- STEP 4 CONTENT: CONFIRMAÇÃO -->
-                        <div id="step-content-4" class="space-y-6 hidden">
-                            <div>
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-blue"></i>
-                                    <h2 class="text-xl font-extrabold text-slate-900">Passo 4: Finalizar Cotação B2B</h2>
-                                </div>
-                                <p class="text-sm text-slate-500 mt-1">Preencha os dados abaixo para enviar sua proposta diretamente ao nosso canal corporativo.</p>
-                            </div>
-
-                            <div class="p-4 bg-blue-50 border border-blue-200 rounded-2xl text-xs text-slate-700 space-y-1.5">
-                                <div class="font-bold text-brand-blue uppercase text-[10px] tracking-wider mb-1">Resumo da Configuração Selecionada:</div>
-                                <div class="flex justify-between"><span>Plano Selecionado:</span> <strong id="summary-speed-text">600 MEGA Fibra</strong></div>
-                                <div class="flex justify-between"><span>Recursos Adicionais:</span> <strong id="summary-addons-text">Nenhum</strong></div>
-                                <div class="flex justify-between"><span>Termo Contratual:</span> <strong id="summary-contract-text">12 Meses</strong></div>
-                            </div>
-
-                            <form id="wizard-quote-form" class="space-y-4">
-                                <div class="grid sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="text-xs font-bold text-slate-700 block mb-1">Nome do Responsável *</label>
-                                        <input type="text" id="lead-name" required placeholder="Seu nome" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-brand-blue">
-                                    </div>
-                                    <div>
-                                        <label class="text-xs font-bold text-slate-700 block mb-1">Razão Social / Empresa *</label>
-                                        <input type="text" id="lead-company" required placeholder="Sua Empresa Ltda" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-brand-blue">
-                                    </div>
-                                </div>
-
-                                <div class="grid sm:grid-cols-3 gap-4">
-                                    <div>
-                                        <label class="text-xs font-bold text-slate-700 block mb-1">CNPJ *</label>
-                                        <input type="text" id="lead-cnpj" required placeholder="00.000.000/0001-00" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-brand-blue">
-                                    </div>
-                                    <div>
-                                        <label class="text-xs font-bold text-slate-700 block mb-1">WhatsApp / Telefone *</label>
-                                        <input type="tel" id="lead-phone" required placeholder="(11) 99999-9999" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-brand-blue">
-                                    </div>
-                                    <div>
-                                        <label class="text-xs font-bold text-slate-700 block mb-1">Cidade do ABC *</label>
-                                        <select id="lead-city" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-brand-blue">
-                                            <option value="Santo André">Santo André</option>
-                                            <option value="São Bernardo do Campo">São Bernardo do Campo</option>
-                                            <option value="Diadema">Diadema</option>
-                                            <option value="Mauá">Mauá</option>
-                                            <option value="Ribeirão Pires">Ribeirão Pires</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-4 rounded-xl shadow-lg transition text-base flex items-center justify-center gap-2">
-                                    <i data-lucide="send" class="w-5 h-5"></i>
-                                    <span>Solicitar Proposta Formal no WhatsApp</span>
+                            <div class="pt-4 flex justify-between">
+                                <button onclick="goToStep(1)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3 rounded-xl text-sm transition">
+                                    Voltar
                                 </button>
-                            </form>
+                                <button onclick="goToStep(3)" class="bg-brand-blue hover:bg-brand-lightBlue text-white font-bold px-6 py-3 rounded-xl text-sm transition flex items-center gap-2">
+                                    <span>Próximo Passo</span>
+                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Step Wizard Navigation Buttons -->
-                        <div id="wizard-navigation" class="flex items-center justify-between pt-8 mt-8 border-t border-slate-100">
-                            <button id="btn-prev" onclick="changeStep(-1)" class="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition hidden flex items-center gap-1.5">
-                                <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                                Voltar
-                            </button>
+                        <!-- Step 3 Content -->
+                        <div id="step-3-content" class="hidden space-y-6">
+                            <div>
+                                <h2 class="text-xl font-extrabold text-slate-900">3. Período de Fidelidade</h2>
+                                <p class="text-xs text-slate-500 mt-1">Escolha o tempo de contrato para obter descontos na taxa de instalação.</p>
+                            </div>
 
-                            <div class="ml-auto flex items-center gap-3">
-                                <button id="btn-next" onclick="changeStep(1)" class="bg-brand-blue hover:bg-brand-lightBlue text-white font-bold text-sm px-7 py-3 rounded-xl shadow-md transition flex items-center gap-2">
-                                    <span>Continuar</span>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <label class="cursor-pointer border-2 border-brand-blue bg-blue-50/50 rounded-2xl p-4 flex flex-col justify-between hover:border-brand-blue transition">
+                                    <input type="radio" name="contract" value="12" checked class="sr-only" onchange="updateSummary()">
+                                    <div>
+                                        <span class="text-xs font-bold text-brand-blue uppercase">12 Meses</span>
+                                        <h3 class="text-lg font-bold text-slate-900 mt-1">Instalação Grátis</h3>
+                                        <p class="text-xs text-slate-500 mt-1">Isenção total da taxa de adesão e roteador em comodato.</p>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer border-2 border-slate-200 rounded-2xl p-4 flex flex-col justify-between hover:border-brand-blue transition">
+                                    <input type="radio" name="contract" value="0" class="sr-only" onchange="updateSummary()">
+                                    <div>
+                                        <span class="text-xs font-bold text-slate-500 uppercase">Sem Fidelidade</span>
+                                        <h3 class="text-lg font-bold text-slate-900 mt-1">Cancelamento Livre</h3>
+                                        <p class="text-xs text-slate-500 mt-1">Taxa única de instalação de R$ 300,00 no primeiro mês.</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="pt-4 flex justify-between">
+                                <button onclick="goToStep(2)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3 rounded-xl text-sm transition">
+                                    Voltar
+                                </button>
+                                <button onclick="goToStep(4)" class="bg-brand-blue hover:bg-brand-lightBlue text-white font-bold px-6 py-3 rounded-xl text-sm transition flex items-center gap-2">
+                                    <span>Ver Resumo do Plano</span>
                                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 Content -->
+                        <div id="step-4-content" class="hidden space-y-6">
+                            <div>
+                                <h2 class="text-xl font-extrabold text-slate-900">4. Tudo pronto! Finalize sua solicitação</h2>
+                                <p class="text-xs text-slate-500 mt-1">Envie a proposta personalizada diretamente para o nosso time corporativo.</p>
+                            </div>
+
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2 text-xs">
+                                <div class="flex justify-between font-medium text-slate-700">
+                                    <span>Plano Escolhido:</span>
+                                    <span id="final-speed-text" class="font-bold text-slate-900">300 MEGA</span>
+                                </div>
+                                <div class="flex justify-between font-medium text-slate-700">
+                                    <span>Recursos Adicionais:</span>
+                                    <span id="final-addons-text" class="font-bold text-slate-900">Nenhum</span>
+                                </div>
+                                <div class="flex justify-between font-medium text-slate-700">
+                                    <span>Contrato:</span>
+                                    <span id="final-contract-text" class="font-bold text-slate-900">12 Meses (Instalação Grátis)</span>
+                                </div>
+                                <div class="border-t border-slate-200 pt-2 flex justify-between font-extrabold text-sm text-slate-900">
+                                    <span>Total Mensal:</span>
+                                    <span id="final-total-text" class="text-brand-blue">R$ 149,90/mês</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Nome da Empresa / Razão Social</label>
+                                    <input type="text" id="b2b-company" placeholder="Ex: TecnoABC LTDA" class="w-full bg-slate-100 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Seu Nome e Cargo</label>
+                                    <input type="text" id="b2b-name" placeholder="Ex: Carlos - Gerente de TI" class="w-full bg-slate-100 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-blue">
+                                </div>
+                            </div>
+
+                            <div class="pt-4 flex justify-between items-center">
+                                <button onclick="goToStep(3)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3 rounded-xl text-sm transition">
+                                    Voltar
+                                </button>
+                                <button onclick="submitB2BOrder()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-3.5 rounded-xl text-sm transition shadow-lg flex items-center gap-2">
+                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                    <span>Enviar Proposta via WhatsApp</span>
                                 </button>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- Right Column: Sticky Live Summary Sidebar -->
-                    <div class="lg:col-span-4 sticky top-28 space-y-4">
-                        <div class="bg-navy-900 rounded-3xl p-6 border border-navy-800 shadow-2xl space-y-6">
-                            
-                            <div class="flex items-center justify-between border-b border-navy-800 pb-4">
-                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Cotação B2B</span>
-                                <span class="px-2.5 py-1 bg-brand-blue/20 text-brand-cyan text-[11px] font-bold rounded-full">Panda Network</span>
+                    <!-- Right Column: Live Summary Box -->
+                    <div class="lg:col-span-4 bg-navy-900 text-white rounded-3xl p-6 border border-navy-800 shadow-xl sticky top-28">
+                        <h3 class="text-lg font-black text-white border-b border-navy-800 pb-4 mb-4 flex items-center gap-2">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-lightBlue"></i>
+                            Resumo da Configuração
+                        </h3>
+
+                        <div class="space-y-4 text-xs">
+                            <div>
+                                <span class="text-slate-400 block">Velocidade Selecionada</span>
+                                <span id="summary-speed" class="text-base font-bold text-brand-cyan">300 MEGA</span>
                             </div>
 
                             <div>
-                                <span class="text-xs text-slate-400 block">Banda de Internet</span>
-                                <div class="text-3xl font-black text-white mt-1 flex items-baseline gap-1">
-                                    <span id="side-speed-val">600</span>
-                                    <span class="text-lg font-bold text-brand-lightBlue">MEGA</span>
-                                </div>
-                                <span class="text-[11px] text-slate-400">100% Fibra Óptica Dedicada</span>
-                            </div>
-
-                            <div class="border-t border-navy-800 pt-4">
-                                <span class="text-xs text-slate-400 block mb-2 font-semibold">Recursos Selecionados:</span>
-                                <ul id="side-addons-list" class="space-y-2 text-xs text-slate-300">
-                                    <li class="text-slate-500 italic">Nenhum adicional selecionado</li>
+                                <span class="text-slate-400 block">Recursos Incluídos</span>
+                                <ul id="summary-addons" class="space-y-1 text-slate-300 mt-1">
+                                    <li>✓ Suporte Empresarial SLA 4h</li>
                                 </ul>
                             </div>
 
-                            <div class="border-t border-navy-800 pt-4">
-                                <span class="text-xs text-slate-400 block">Condição de Fidelidade</span>
-                                <span id="side-contract-val" class="text-sm font-bold text-white mt-0.5 block">12 Meses (Instalação Grátis)</span>
+                            <div>
+                                <span class="text-slate-400 block">Contrato & Adesão</span>
+                                <span id="summary-contract" class="font-semibold text-slate-200">12 Meses (Instalação Grátis)</span>
                             </div>
 
-                            <!-- Calculated Monthly Fee -->
-                            <div class="bg-navy-950 rounded-2xl p-5 border border-navy-800">
-                                <span class="text-xs text-slate-400 block">Mensalidade Estimada:</span>
+                            <div class="border-t border-navy-800 pt-4 mt-4">
+                                <span class="text-xs text-slate-400 block">Valor Mensal Estimado:</span>
                                 <div class="flex items-baseline gap-1 mt-1">
-                                    <span class="text-sm font-bold text-slate-400">R$</span>
-                                    <span id="side-price-val" class="text-4xl font-extrabold text-white">179</span>
-                                    <span class="text-sm font-bold text-slate-400">,90/mês</span>
+                                    <span class="text-xs text-slate-400 font-bold">R$</span>
+                                    <span id="summary-price" class="text-3xl font-black text-white">149</span>
+                                    <span id="summary-price-cents" class="text-xs text-slate-400 font-bold">,90/mês</span>
                                 </div>
-                                <p class="text-[10px] text-slate-500 mt-2">*Proposta final sujeita à verificação de viabilidade técnica.</p>
                             </div>
-
-                            <button id="side-action-btn" onclick="goToStep(4)" class="w-full bg-gradient-to-r from-brand-blue to-brand-lightBlue hover:from-brand-lightBlue hover:to-brand-blue text-white font-extrabold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm">
-                                <span>Avançar para Proposta</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
                         </div>
                     </div>
 
@@ -789,229 +717,23 @@
 
             </section>
         </div>
-
-        <!-- Shared Section 1: Cobertura por Cidades do ABC -->
-        <section id="cobertura-cidades" class="py-16 bg-navy-900 border-t border-navy-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="text-brand-cyan font-bold text-xs uppercase tracking-wider">Rede Própria de Alta Performance</span>
-                <h2 class="text-3xl font-extrabold text-white mt-2 mb-8">Cidades Atendidas no Grande ABC</h2>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-                    <div class="bg-navy-800 border border-navy-700 p-5 rounded-2xl flex flex-col items-center hover:border-brand-cyan transition">
-                        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse mb-3"></div>
-                        <span class="font-bold text-white text-sm">Santo André</span>
-                        <span class="text-[11px] text-slate-400 mt-1">100% Cobertura</span>
-                    </div>
-
-                    <div class="bg-navy-800 border border-navy-700 p-5 rounded-2xl flex flex-col items-center hover:border-brand-cyan transition">
-                        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse mb-3"></div>
-                        <span class="font-bold text-white text-sm">São Bernardo</span>
-                        <span class="text-[11px] text-slate-400 mt-1">100% Cobertura</span>
-                    </div>
-
-                    <div class="bg-navy-800 border border-navy-700 p-5 rounded-2xl flex flex-col items-center hover:border-brand-cyan transition">
-                        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse mb-3"></div>
-                        <span class="font-bold text-white text-sm">Diadema</span>
-                        <span class="text-[11px] text-slate-400 mt-1">100% Cobertura</span>
-                    </div>
-
-                    <div class="bg-navy-800 border border-navy-700 p-5 rounded-2xl flex flex-col items-center hover:border-brand-cyan transition">
-                        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse mb-3"></div>
-                        <span class="font-bold text-white text-sm">Mauá</span>
-                        <span class="text-[11px] text-slate-400 mt-1">Expansão Ativa</span>
-                    </div>
-
-                    <div class="bg-navy-800 border border-navy-700 p-5 rounded-2xl flex flex-col items-center hover:border-brand-cyan transition col-span-2 sm:col-span-1">
-                        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse mb-3"></div>
-                        <span class="font-bold text-white text-sm">Ribeirão Pires</span>
-                        <span class="text-[11px] text-slate-400 mt-1">Expansão Ativa</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Shared Section 2: Simulador de Plano Ideal -->
-        <section id="recomendador" class="py-16 bg-navy-950 border-t border-navy-800">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8">
-                    <span class="text-brand-lightBlue font-bold text-xs uppercase tracking-wider">Simulador Rápido</span>
-                    <h2 class="text-3xl font-extrabold text-white mt-2">Descubra o Plano Ideal Para Você</h2>
-                    <p class="text-slate-400 text-sm mt-2">Qual o seu principal uso da internet no dia a dia?</p>
-                </div>
-
-                <div class="grid sm:grid-cols-3 gap-4 mb-8">
-                    <button onclick="recommendPlan('basic')" id="rec-btn-basic" class="bg-navy-900 border-2 border-navy-800 hover:border-brand-blue p-5 rounded-2xl text-center transition">
-                        <i data-lucide="laptop" class="w-8 h-8 text-brand-cyan mx-auto mb-2"></i>
-                        <h4 class="font-bold text-white text-sm">Navegação & Redes</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Para pouca gente e uso casual.</p>
-                    </button>
-
-                    <button onclick="recommendPlan('family')" id="rec-btn-family" class="bg-navy-900 border-2 border-brand-blue p-5 rounded-2xl text-center transition shadow-lg">
-                        <i data-lucide="tv" class="w-8 h-8 text-brand-lightBlue mx-auto mb-2"></i>
-                        <h4 class="font-bold text-white text-sm">Família & Streaming</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Múltiplos celulares e TVs 4K.</p>
-                    </button>
-
-                    <button onclick="recommendPlan('gamer')" id="rec-btn-gamer" class="bg-navy-900 border-2 border-navy-800 hover:border-brand-blue p-5 rounded-2xl text-center transition">
-                        <i data-lucide="gamepad-2" class="w-8 h-8 text-brand-orange mx-auto mb-2"></i>
-                        <h4 class="font-bold text-white text-sm">Games & Home Office</h4>
-                        <p class="text-[11px] text-slate-400 mt-1">Ping baixo e uploads pesados.</p>
-                    </button>
-                </div>
-
-                <div id="rec-result-box" class="bg-navy-900 border border-brand-lightBlue/40 p-6 rounded-2xl text-center">
-                    <span class="text-xs font-bold text-brand-cyan uppercase">Recomendação Panda:</span>
-                    <h3 id="rec-result-title" class="text-2xl font-black text-white mt-1">600 MEGA Fibra Óptica</h3>
-                    <p id="rec-result-desc" class="text-xs text-slate-300 mt-2">Combinação ideal para suportar simultaneamente Smart TVs assistindo Netflix 4K, reuniões via Zoom e navegadores abertos sem travamento.</p>
-                    <a href="https://wa.me/5511922077201?text=Quero%20contratar%20o%20Plano%20Recomendado" target="_blank" class="inline-flex items-center gap-2 mt-4 bg-brand-lightBlue hover:bg-brand-blue text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-lg">
-                        <span>Contratar Plano Recomendado</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Shared Section 3: Key Advantages -->
-        <section id="vantagens" class="py-16 bg-navy-900 border-t border-navy-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-brand-cyan font-bold text-xs uppercase tracking-wider">Por Que Escolher a Panda Fibra?</span>
-                    <h2 class="text-3xl font-extrabold text-white mt-2">Diferenciais da Nossa Rede no ABC</h2>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700">
-                        <div class="w-12 h-12 bg-brand-blue/20 text-brand-lightBlue rounded-xl flex items-center justify-center mb-4">
-                            <i data-lucide="zap" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Conexão 100% Fibra Óptica</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            A fibra chega direto dentro da sua residência ou empresa, sem interferências e sem perda de velocidade.
-                        </p>
-                    </div>
-
-                    <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700">
-                        <div class="w-12 h-12 bg-brand-cyan/20 text-brand-cyan rounded-xl flex items-center justify-center mb-4">
-                            <i data-lucide="shield-check" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Suporte Técnico Local e Rápido</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Equipes técnicas espalhadas por Santo André, SBC e região para resolver qualquer chamado presencial em tempo recorde.
-                        </p>
-                    </div>
-
-                    <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700">
-                        <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center mb-4">
-                            <i data-lucide="wifi" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Sem Surpresas na Fatura</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Nenhum limite de navegação ou alteração misteriosa nos preços. Transparência total com nossos clientes.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action Section -->
-        <section id="fale-conosco" class="py-20 bg-gradient-to-b from-navy-950 via-navy-900 to-navy-950 px-4 sm:px-6 lg:px-8 border-t border-navy-800">
-            <div class="max-w-4xl mx-auto text-center space-y-8">
-                <div>
-                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand-blue/10 border border-brand-lightBlue/30 text-brand-lightBlue text-xs font-extrabold uppercase tracking-widest mb-3">
-                        <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
-                        Atendimento Imediato
-                    </span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
-                        Fale com a Panda Fibra
-                    </h2>
-                    <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-xl mx-auto">
-                        Confira cobertura no seu endereço e ative hoje mesmo.
-                    </p>
-                </div>
-
-                <div class="bg-white text-slate-900 rounded-3xl p-8 sm:p-12 shadow-2xl shadow-black/40 border border-slate-100 max-w-2xl mx-auto transition transform hover:scale-[1.01]">
-                    <div class="w-16 h-16 bg-blue-50 text-brand-blue rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
-                        <i data-lucide="phone-call" class="w-8 h-8"></i>
-                    </div>
-
-                    <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-3">
-                        Queremos te ligar
-                    </h3>
-
-                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-md mx-auto mb-8">
-                        Envie seu contato ou chame no WhatsApp para confirmar disponibilidade e ofertas.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="https://wa.me/5511922077201?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20atendente" 
-                           target="_blank" 
-                           class="w-full sm:w-auto px-8 py-4 bg-brand-blue hover:bg-brand-lightBlue text-white font-extrabold text-sm rounded-full shadow-lg shadow-brand-blue/30 transition flex items-center justify-center gap-2.5">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i>
-                            <span>Chamar no WhatsApp</span>
-                        </a>
-
-                        <a href="tel:11922077201" 
-                           class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-brand-blue border-2 border-brand-blue font-extrabold text-sm rounded-full transition flex items-center justify-center gap-2.5">
-                            <i data-lucide="phone" class="w-4 h-4"></i>
-                            <span>Ligar agora</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="py-16 bg-navy-900 border-t border-navy-800 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-10">
-                    <span class="text-brand-lightBlue font-bold text-xs uppercase tracking-wider">Tire Suas Dúvidas</span>
-                    <h2 class="text-3xl font-black text-white mt-2">Perguntas Frequentes (FAQ)</h2>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="bg-navy-800 rounded-2xl p-5 border border-navy-700">
-                        <h4 class="font-bold text-white text-base">Qual o prazo de instalação após o pedido?</h4>
-                        <p class="text-slate-300 text-xs mt-2 leading-relaxed">Em até 24 a 48 horas úteis após a aprovação do cadastro na maioria dos bairros do Grande ABC.</p>
-                    </div>
-
-                    <div class="bg-navy-800 rounded-2xl p-5 border border-navy-700">
-                        <h4 class="font-bold text-white text-base">Existe taxa de adesão ou instalação?</h4>
-                        <p class="text-slate-300 text-xs mt-2 leading-relaxed">A instalação é isenta nos planos residenciais e corporativos com fidelidade contratual.</p>
-                    </div>
-
-                    <div class="bg-navy-800 rounded-2xl p-5 border border-navy-700">
-                        <h4 class="font-bold text-white text-base">Vocês oferecem IP Fixo IPv4 para empresas?</h4>
-                        <p class="text-slate-300 text-xs mt-2 leading-relaxed">Sim, nos planos corporativos (B2B) disponibilizamos IP Fixo dedicado IPv4 para suporte a servidores e VPNs.</p>
-                    </div>
-
-                    <div class="bg-navy-800 rounded-2xl p-5 border border-navy-700">
-                        <h4 class="font-bold text-white text-base">Quais formas de pagamento são aceitas?</h4>
-                        <p class="text-slate-300 text-xs mt-2 leading-relaxed">Aceitamos Boleto Bancário, Pix Automático, Cartão de Crédito e Débito Automático.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <!-- Footer -->
-    <footer class="bg-navy-950 border-t border-navy-800 text-slate-400 text-xs py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer class="bg-navy-900 border-t border-navy-800 py-12 text-slate-400 text-xs mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="space-y-3">
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brand-blue rounded-xl flex items-center justify-center text-white">
-                        <i data-lucide="network" class="w-4 h-4"></i>
+                    <div class="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center">
+                        <img src="logo_panda-removebg-preview.png" alt="Panda Internet Fibra" class="w-full h-full object-contain">
                     </div>
-                    <span class="text-lg font-black text-white">PANDA FIBRA</span>
+                    <span class="text-lg font-black text-white">PANDA<span class="text-brand-lightBlue">FIBRA</span></span>
                 </div>
-                <p class="text-slate-400 text-xs leading-relaxed">
-                    A melhor internet 100% fibra óptica para sua casa ou negócio no Grande ABC.
-                </p>
+                <p class="text-slate-400 leading-relaxed">Provedor de internet fibra óptica com infraestrutura própria no ABC Paulista.</p>
             </div>
-
             <div>
-                <h5 class="text-white font-bold mb-3">Cidades Atendidas</h5>
-                <ul class="space-y-1.5 text-xs text-slate-400">
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Cidades Atendidas</h4>
+                <ul class="space-y-2">
                     <li>Santo André</li>
                     <li>São Bernardo do Campo</li>
                     <li>Diadema</li>
@@ -1019,302 +741,175 @@
                     <li>Ribeirão Pires</li>
                 </ul>
             </div>
-
             <div>
-                <h5 class="text-white font-bold mb-3">Serviços</h5>
-                <ul class="space-y-1.5 text-xs text-slate-400">
-                    <li>Internet Residencial</li>
-                    <li>Fibra Óptica Empresarial B2B</li>
-                    <li>IP Fixo IPv4</li>
-                    <li>Combos com TV Digital</li>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Links Rápidos</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" onclick="switchMode('b2c')" class="hover:text-white transition">Planos Residenciais</a></li>
+                    <li><a href="#" onclick="switchMode('b2b')" class="hover:text-white transition">Planos Empresariais</a></li>
+                    <li><a href="https://wa.me/5511922077201" target="_blank" class="hover:text-white transition">Central de Atendimento</a></li>
                 </ul>
             </div>
-
             <div>
-                <h5 class="text-white font-bold mb-3">Atendimento</h5>
-                <p class="text-xs text-slate-400 mb-1">WhatsApp: (11) 92207-7201</p>
-                <p class="text-xs text-slate-400 mb-2">E-mail: contato@pandafibra.com.br</p>
-                <p class="text-xs text-slate-400">Suporte técnico 24 horas por dia, 7 dias por semana no ABC.</p>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Atendimento</h4>
+                <p class="text-slate-300 font-medium">WhatsApp: (11) 92207-7201</p>
+                <p class="mt-2 text-slate-400">Atendimento 24 horas por dia, 7 dias por semana.</p>
             </div>
         </div>
-
-        <div class="max-w-7xl mx-auto pt-6 border-t border-navy-900 text-center text-slate-500 text-[11px]">
-            © 2026 Panda Fibra & Panda Network. Todos os direitos reservados.
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-navy-800 text-center text-slate-500">
+            © 2026 Panda Fibra & Network - Todos os direitos reservados.
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Interatividade e Wizard Logic -->
     <script>
-        // Initialize Lucide Icons
+        // Lucide Icons Initialization
         lucide.createIcons();
 
-        // Mobile drawer toggler
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        document.getElementById('mobile-menu-btn')?.addEventListener('click', toggleMobileMenu);
-
-        // Mode Switching Logic (B2C vs B2B)
+        // Switch Modes (B2C / B2B)
         function switchMode(mode) {
             const b2cWrapper = document.getElementById('mode-b2c-wrapper');
             const b2bWrapper = document.getElementById('mode-b2b-wrapper');
             const toggleB2c = document.getElementById('toggle-b2c');
             const toggleB2b = document.getElementById('toggle-b2b');
-            const navBtnRes = document.getElementById('nav-btn-res');
-            const navBtnCorp = document.getElementById('nav-btn-corp');
-            const logoSubtext = document.getElementById('logo-subtext');
 
-            if (mode === 'b2c') {
-                b2cWrapper.classList.remove('hidden');
-                b2bWrapper.classList.add('hidden');
-                
-                toggleB2c.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-brand-blue text-white shadow-md";
-                toggleB2b.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white";
-
-                navBtnRes.className = "text-sm font-semibold text-white hover:text-brand-lightBlue transition-colors px-3 py-2 rounded-lg";
-                navBtnCorp.className = "text-sm font-semibold text-slate-400 hover:text-brand-lightBlue transition-colors px-3 py-2 rounded-lg";
-
-                logoSubtext.innerText = "FIBRA";
-            } else {
+            if (mode === 'b2b') {
                 b2cWrapper.classList.add('hidden');
                 b2bWrapper.classList.remove('hidden');
-
-                toggleB2b.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-brand-blue text-white shadow-md";
-                toggleB2c.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white";
-
-                navBtnCorp.className = "text-sm font-semibold text-white hover:text-brand-lightBlue transition-colors px-3 py-2 rounded-lg";
-                navBtnRes.className = "text-sm font-semibold text-slate-400 hover:text-brand-lightBlue transition-colors px-3 py-2 rounded-lg";
-
-                logoSubtext.innerText = "NETWORK";
+                
+                toggleB2b.classList.add('bg-brand-blue', 'text-white', 'shadow-md');
+                toggleB2b.classList.remove('text-slate-400');
+                
+                toggleB2c.classList.remove('bg-brand-blue', 'text-white', 'shadow-md');
+                toggleB2c.classList.add('text-slate-400');
+            } else {
+                b2bWrapper.classList.add('hidden');
+                b2cWrapper.classList.remove('hidden');
+                
+                toggleB2c.classList.add('bg-brand-blue', 'text-white', 'shadow-md');
+                toggleB2c.classList.remove('text-slate-400');
+                
+                toggleB2b.classList.remove('bg-brand-blue', 'text-white', 'shadow-md');
+                toggleB2b.classList.add('text-slate-400');
             }
         }
 
-        // Coverage Form Handler
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // Coverage Check Function
         function handleCoverageCheck(e) {
             e.preventDefault();
             const city = document.getElementById('coverage-city').value;
             const cep = document.getElementById('coverage-cep').value;
-            const resultBox = document.getElementById('coverage-result');
+            const resultDiv = document.getElementById('coverage-result');
 
             if (!city || !cep) return;
 
-            resultBox.classList.remove('hidden', 'bg-red-500/20', 'text-red-300', 'bg-emerald-500/20', 'text-emerald-300');
-            resultBox.classList.add('bg-emerald-500/20', 'text-emerald-300', 'border', 'border-emerald-500/30');
-            resultBox.innerHTML = `✓ Excelente notícia! Cobertura 100% Fibra Óptica confirmada para <strong>${city}</strong> (CEP: ${cep}). Redirecionando para o WhatsApp...`;
-
-            setTimeout(() => {
-                const msg = encodeURIComponent(`Olá! Gostaria de contratar a Panda Fibra para a cidade de ${city}, CEP: ${cep}`);
-                window.open(`https://wa.me/5511922077201?text=${msg}`, '_blank');
-            }, 1800);
+            resultDiv.classList.remove('hidden', 'bg-red-900/50', 'text-red-300', 'bg-emerald-900/50', 'text-emerald-300');
+            resultDiv.classList.add('bg-emerald-900/50', 'text-emerald-300', 'border', 'border-emerald-500/30');
+            resultDiv.innerHTML = `✓ Excelente notícia! Temos disponibilidade de Fibra Óptica para o CEP ${cep} em ${city}. Clique no plano desejado abaixo para assinar.`;
         }
 
-        // Speed Matcher / Recommender
-        function recommendPlan(type) {
-            const btnBasic = document.getElementById('rec-btn-basic');
-            const btnFamily = document.getElementById('rec-btn-family');
-            const btnGamer = document.getElementById('rec-btn-gamer');
-            const title = document.getElementById('rec-result-title');
-            const desc = document.getElementById('rec-result-desc');
-
-            btnBasic.className = "bg-navy-900 border-2 border-navy-800 hover:border-brand-blue p-5 rounded-2xl text-center transition";
-            btnFamily.className = "bg-navy-900 border-2 border-navy-800 hover:border-brand-blue p-5 rounded-2xl text-center transition";
-            btnGamer.className = "bg-navy-900 border-2 border-navy-800 hover:border-brand-blue p-5 rounded-2xl text-center transition";
-
-            if (type === 'basic') {
-                btnBasic.className = "bg-navy-900 border-2 border-brand-blue p-5 rounded-2xl text-center transition shadow-lg";
-                title.innerText = "400 MEGA Fibra Óptica";
-                desc.innerText = "Perfeito para redes sociais, e-mails, vídeos em HD e navegação diária sem lentidão.";
-            } else if (type === 'family') {
-                btnFamily.className = "bg-navy-900 border-2 border-brand-blue p-5 rounded-2xl text-center transition shadow-lg";
-                title.innerText = "600 MEGA Fibra Óptica";
-                desc.innerText = "Combinação ideal para suportar simultaneamente Smart TVs assistindo streaming em 4K e múltiplos smartphones conectados.";
-            } else if (type === 'gamer') {
-                btnGamer.className = "bg-navy-900 border-2 border-brand-orange p-5 rounded-2xl text-center transition shadow-lg";
-                title.innerText = "800 MEGA Gamer & Home Office";
-                desc.innerText = "Máxima estabilidade com ping ultra-baixo para jogos competitivos, transmissões e downloads volumosos de arquivos.";
-            }
-        }
-
-        // B2B Wizard State Management
+        // Wizard Steps Handler
         let currentStep = 1;
-        const speeds = [
-            { speed: "300", price: 119.90, desc: "Ideal para pequenos comércios e escritórios até 10 dispositivos." },
-            { speed: "600", price: 179.90, desc: "Excelente para equipes de até 20 colaboradores e uso intensivo de nuvem." },
-            { speed: "800", price: 259.90, desc: "Para empresas com reuniões simultâneas em 4K e alto tráfego de uploads." },
-            { speed: "1000", price: 399.90, desc: "Velocidade máxima Gigabit com link dedicado e rotas corporativas prioritárias." }
-        ];
-
-        const speedSlider = document.getElementById('speed-slider');
-        if(speedSlider) {
-            speedSlider.addEventListener('input', updateCalculations);
-        }
-
-        function updateCalculations() {
-            const speedIdx = parseInt(document.getElementById('speed-slider').value);
-            const selectedSpeedObj = speeds[speedIdx];
-
-            // Addons
-            const addonIp = document.getElementById('addon-ip')?.checked;
-            const addonSla = document.getElementById('addon-sla')?.checked;
-            const addonBackup = document.getElementById('addon-backup')?.checked;
-            const addonWifi = document.getElementById('addon-wifi')?.checked;
-            const addonVoip = document.getElementById('addon-voip')?.checked;
-
-            let addonsPrice = 0;
-            let addonsListHtml = '';
-
-            if (addonIp) {
-                addonsPrice += 50;
-                addonsListHtml += `<li class="flex items-center justify-between text-brand-cyan"><span>• IP Fixo IPv4</span><span>+R$50</span></li>`;
-            }
-            if (addonSla) {
-                addonsPrice += 90;
-                addonsListHtml += `<li class="flex items-center justify-between text-brand-cyan"><span>• SLA 4h Garantido</span><span>+R$90</span></li>`;
-            }
-            if (addonBackup) {
-                addonsPrice += 120;
-                addonsListHtml += `<li class="flex items-center justify-between text-brand-cyan"><span>• Link Redundante</span><span>+R$120</span></li>`;
-            }
-            if (addonWifi) {
-                addonsPrice += 40;
-                addonsListHtml += `<li class="flex items-center justify-between text-brand-cyan"><span>• Wi-Fi 6 Mesh</span><span>+R$40</span></li>`;
-            }
-            if (addonVoip) {
-                addonsPrice += 60;
-                addonsListHtml += `<li class="flex items-center justify-between text-brand-cyan"><span>• PABX VoIP Nuvem</span><span>+R$60</span></li>`;
-            }
-
-            if (!addonsListHtml) {
-                addonsListHtml = `<li class="text-slate-500 italic">Nenhum adicional selecionado</li>`;
-            }
-
-            // Contract Discount
-            const contractRadio = document.querySelector('input[name="contract-period"]:checked');
-            const contractPeriod = contractRadio ? parseInt(contractRadio.value) : 12;
-            let discountMultiplier = 1.0;
-            let contractLabel = "Sem Fidelidade";
-
-            if (contractPeriod === 12) {
-                discountMultiplier = 0.9;
-                contractLabel = "12 Meses (Instalação Grátis)";
-            } else if (contractPeriod === 24) {
-                discountMultiplier = 0.8;
-                contractLabel = "24 Meses (Wi-Fi 6 Grátis)";
-            }
-
-            const basePrice = selectedSpeedObj.price;
-            const totalPrice = (basePrice * discountMultiplier) + addonsPrice;
-
-            // DOM Updates
-            document.getElementById('speed-display-val').innerText = selectedSpeedObj.speed;
-            document.getElementById('speed-description').innerText = selectedSpeedObj.desc;
-            document.getElementById('side-speed-val').innerText = selectedSpeedObj.speed;
-            document.getElementById('side-price-val').innerText = totalPrice.toFixed(0);
-            document.getElementById('side-addons-list').innerHTML = addonsListHtml;
-            document.getElementById('side-contract-val').innerText = contractLabel;
-
-            // Summary tab updates
-            document.getElementById('summary-speed-text').innerText = `${selectedSpeedObj.speed} MEGA Fibra`;
-            document.getElementById('summary-contract-text').innerText = contractLabel;
-            
-            const addonNames = [];
-            if (addonIp) addonNames.push("IP Fixo");
-            if (addonSla) addonNames.push("SLA 4h");
-            if (addonBackup) addonNames.push("Backup Redundante");
-            if (addonWifi) addonNames.push("Wi-Fi Mesh");
-            if (addonVoip) addonNames.push("PABX VoIP");
-
-            document.getElementById('summary-addons-text').innerText = addonNames.length > 0 ? addonNames.join(", ") : "Nenhum";
-        }
 
         function goToStep(step) {
             currentStep = step;
-            renderWizardState();
-        }
 
-        function changeStep(delta) {
-            currentStep += delta;
-            if (currentStep < 1) currentStep = 1;
-            if (currentStep > 4) currentStep = 4;
-            renderWizardState();
-        }
-
-        function renderWizardState() {
+            // Hide all steps
             for (let i = 1; i <= 4; i++) {
-                const content = document.getElementById(`step-content-${i}`);
+                document.getElementById(`step-${i}-content`).classList.add('hidden');
                 const indicator = document.getElementById(`indicator-${i}`);
-                const label = document.getElementById(`label-${i}`);
-
-                if (i === currentStep) {
-                    content.classList.remove('hidden');
-                    indicator.className = "w-10 h-10 rounded-full bg-brand-blue text-white font-bold flex items-center justify-center text-sm shadow-md transition-all";
-                    indicator.innerHTML = i;
-                    label.className = "text-xs font-bold text-slate-900 mt-2";
-                } else if (i < currentStep) {
-                    content.classList.add('hidden');
-                    indicator.className = "w-10 h-10 rounded-full bg-emerald-500 text-white font-bold flex items-center justify-center text-sm transition-all";
-                    indicator.innerHTML = "✓";
-                    label.className = "text-xs font-semibold text-emerald-600 mt-2";
-                } else {
-                    content.classList.add('hidden');
-                    indicator.className = "w-10 h-10 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center text-sm transition-all";
-                    indicator.innerHTML = i;
-                    label.className = "text-xs font-medium text-slate-400 mt-2";
-                }
+                indicator.classList.remove('bg-brand-blue', 'text-white');
+                indicator.classList.add('bg-slate-100', 'text-slate-500');
             }
 
-            // Progress bar width
-            const progressBar = document.getElementById('step-progress-bar');
-            progressBar.style.width = `${(currentStep / 4) * 100}%`;
+            // Show active step
+            document.getElementById(`step-${step}-content`).classList.remove('hidden');
+            const activeIndicator = document.getElementById(`indicator-${step}`);
+            activeIndicator.classList.remove('bg-slate-100', 'text-slate-500');
+            activeIndicator.classList.add('bg-brand-blue', 'text-white');
 
-            // Navigation buttons visibility
-            const btnPrev = document.getElementById('btn-prev');
-            const btnNext = document.getElementById('btn-next');
-
-            if (currentStep === 1) {
-                btnPrev.classList.add('hidden');
-            } else {
-                btnPrev.classList.remove('hidden');
-            }
-
-            if (currentStep === 4) {
-                btnNext.classList.add('hidden');
-            } else {
-                btnNext.classList.remove('hidden');
-            }
+            updateSummary();
         }
 
-        // B2B Quote Submission
-        document.getElementById('wizard-quote-form')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('lead-name').value;
-            const company = document.getElementById('lead-company').value;
-            const cnpj = document.getElementById('lead-cnpj').value;
-            const phone = document.getElementById('lead-phone').value;
-            const city = document.getElementById('lead-city').value;
+        // Wizard Price and Summary Update
+        function updateSummary() {
+            // Speed Selection
+            const speedOptions = {
+                '300': { name: '300 MEGA', price: 149.90 },
+                '600': { name: '600 MEGA', price: 229.90 },
+                '1000': { name: '1 GIGA (1000M)', price: 399.90 }
+            };
 
-            const speed = document.getElementById('summary-speed-text').innerText;
-            const addons = document.getElementById('summary-addons-text').innerText;
-            const contract = document.getElementById('summary-contract-text').innerText;
-            const estimatedPrice = document.getElementById('side-price-val').innerText;
+            const selectedSpeedVal = document.querySelector('input[name="speed"]:checked').value;
+            const selectedSpeed = speedOptions[selectedSpeedVal];
 
-            const message = `*SOLICITAÇÃO DE COTAÇÃO B2B - PANDA NETWORK*\n\n` +
-                            `*Empresa:* ${company}\n` +
-                            `*CNPJ:* ${cnpj}\n` +
-                            `*Contato:* ${name} (${phone})\n` +
-                            `*Cidade:* ${city}\n\n` +
-                            `*Configuração:* ${speed}\n` +
-                            `*Adicionais:* ${addons}\n` +
-                            `*Plano Contratual:* ${contract}\n` +
-                            `*Valor Estimado:* R$ ${estimatedPrice},90/mês`;
+            // Addons Selection
+            let addonsPrice = 0;
+            let addonsList = ['✓ Suporte Empresarial SLA 4h'];
+            let addonsFinalText = [];
 
-            window.open(`https://wa.me/5511922077201?text=${encodeURIComponent(message)}`, '_blank');
-        });
+            if (document.getElementById('addon-ip').checked) {
+                addonsPrice += 50.00;
+                addonsList.push('✓ IP Fixo V4 Dedicado (+R$50)');
+                addonsFinalText.push('IP Fixo V4');
+            }
+            if (document.getElementById('addon-sla').checked) {
+                addonsPrice += 80.00;
+                addonsList.push('✓ SLA Emergencial 2 Horas (+R$80)');
+                addonsFinalText.push('SLA 2h');
+            }
 
-        // Initialize calculations on load
-        updateCalculations();
+            // Contract Selection
+            const selectedContract = document.querySelector('input[name="contract"]:checked').value;
+            let contractText = selectedContract === '12' ? '12 Meses (Instalação Grátis)' : 'Sem Fidelidade (Adesão R$300)';
+
+            // Calculations
+            const totalPrice = selectedSpeed.price + addonsPrice;
+            const [integerPart, decimalPart] = totalPrice.toFixed(2).split('.');
+
+            // Update Side Summary Box
+            document.getElementById('summary-speed').textContent = selectedSpeed.name;
+            document.getElementById('summary-price').textContent = integerPart;
+            document.getElementById('summary-price-cents').textContent = `,${decimalPart}/mês`;
+            document.getElementById('summary-contract').textContent = contractText;
+
+            const addonsUl = document.getElementById('summary-addons');
+            addonsUl.innerHTML = addonsList.map(item => `<li>${item}</li>`).join('');
+
+            // Update Final Step Summary
+            document.getElementById('final-speed-text').textContent = selectedSpeed.name;
+            document.getElementById('final-addons-text').textContent = addonsFinalText.length ? addonsFinalText.join(' + ') : 'Nenhum';
+            document.getElementById('final-contract-text').textContent = contractText;
+            document.getElementById('final-total-text').textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}/mês`;
+        }
+
+        // B2B Order Submission via WhatsApp
+        function submitB2BOrder() {
+            const company = document.getElementById('b2b-company').value || 'Não informada';
+            const name = document.getElementById('b2b-name').value || 'Não informado';
+            
+            const speedText = document.getElementById('final-speed-text').textContent;
+            const addonsText = document.getElementById('final-addons-text').textContent;
+            const contractText = document.getElementById('final-contract-text').textContent;
+            const totalText = document.getElementById('final-total-text').textContent;
+
+            const message = `Olá! Gostaria de cotar o plano empresarial personalizado:%0A%0A` +
+                `*Empresa:* ${company}%0A` +
+                `*Contato:* ${name}%0A` +
+                `*Velocidade:* ${speedText}%0A` +
+                `*Adicionais:* ${addonsText}%0A` +
+                `*Contrato:* ${contractText}%0A` +
+                `*Valor Estimado:* ${totalText}`;
+
+            window.open(`https://wa.me/5511922077201?text=${message}`, '_blank');
+        }
     </script>
 </body>
 </html>
