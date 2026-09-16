@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Fibra & Network | Internet Banda Larga e Soluções Empresariais no ABC</title>
+    <link rel="icon" type="image/png" href="logo-panda-icone.png">
+    <link rel="apple-touch-icon" href="logo-panda-icone.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        panda: {
+                            dark: '#0f172a',
+                            navy: '#1e293b',
+                            blue: '#0284c7',
+                            cyan: '#0ea5e9',
+                            lightCyan: '#e0f2fe',
+                            orange: '#f97316',
+                            orangeHover: '#ea580c',
+                            accent: '#10b981',
+                            green: '#059669',
+                            greenHover: '#047857'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(15, 23, 42, 0.90);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 20%, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 0.98) 70%), #0f172a;
+        }
+        /* Customização do Slider B2B */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background: #0ea5e9;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.6);
+            margin-top: -10px;
+            border: 3px solid #0f172a;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #334155;
+            border-radius: 4px;
+        }
+        
+        /* Checkbox Customizado B2B */
+        .b2b-checkbox:checked + div {
+            border-color: #0ea5e9;
+            background-color: rgba(14, 165, 233, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- TOP BAR DE NAVEGAÇÃO / ATENDIMENTO -->
+    <div class="bg-slate-900/90 border-b border-slate-800 text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-4 text-slate-400">
+                <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-sky-400"></i> Atendimento no Grande ABC Paulista</span>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <span class="hidden md:flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-emerald-400"></i> Suporte Técnico 24/7</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/551143807748" target="_blank" class="bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 px-2.5 py-1 rounded-full font-medium transition flex items-center gap-1">
+                    <i data-lucide="headphones" class="w-3 h-3"></i> Suporte
+                </a>
+                <a href="https://wa.me/551143807748" target="_blank" class="bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 px-2.5 py-1 rounded-full font-medium transition flex items-center gap-1">
+                    <i data-lucide="receipt" class="w-3 h-3"></i> Financeiro
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER NAV -->
+    <header class="sticky top-0 z-50 glass-header border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- LOGO -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="switchMainTab('residencial')">
+                    <img src="logo-panda.png" alt="Panda Fibra - Internet Fibra Óptica no ABC" onerror="logoFallback(this)" class="h-9 sm:h-10 w-auto max-w-[190px] object-contain object-left">
+                    <div>
+                        <span class="text-2xl font-black tracking-tight text-white block leading-none">PANDA<span class="text-sky-400">FIBRA</span></span>
+                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Região do ABC</span>
+                    </div>
+                </div>
+
+                <!-- MAIN MODE SWITCHER (Residencial vs Empresarial) -->
+                <div class="hidden lg:flex items-center bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 shadow-inner">
+                    <button id="nav-btn-residencial" onclick="switchMainTab('residencial')" class="px-5 py-2 rounded-xl font-bold text-sm transition-all duration-300 bg-sky-500 text-white shadow-md">
+                        <i data-lucide="home" class="w-4 h-4 inline mr-1.5"></i> Para Você & Casa
+                    </button>
+                    <button id="nav-btn-empresarial" onclick="switchMainTab('empresarial')" class="px-5 py-2 rounded-xl font-bold text-sm text-slate-400 hover:text-white transition-all duration-300">
+                        <i data-lucide="building-2" class="w-4 h-4 inline mr-1.5"></i> Para Sua Empresa (B2B)
+                    </button>
+                </div>
+
+                <!-- NAV LINKS & CTA -->
+                <div class="hidden md:flex items-center gap-6">
+                    <nav class="flex gap-6 text-sm font-medium text-slate-300">
+                        <a href="#planos" class="hover:text-sky-400 transition">Planos</a>
+                        <a href="#vantagens" class="hover:text-sky-400 transition">Vantagens</a>
+                        <a href="#cobertura" class="hover:text-sky-400 transition">Rede ABC</a>
+                        <a href="#faq" class="hover:text-sky-400 transition">FAQ</a>
+                    </nav>
+                    <a href="https://wa.me/551143807748?text=Ol%C3%A1!%20Gostaria%20de%20assinar%20a%20Panda%20Fibra" target="_blank" class="bg-sky-500 hover:bg-sky-400 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-sky-500/25 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        Assinar Agora
+                    </a>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU OVERLAY -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 py-6 space-y-4">
+            <div class="grid grid-cols-2 gap-2 pb-4 border-b border-slate-800">
+                <button onclick="switchMainTab('residencial'); toggleMobileMenu()" class="px-3 py-2.5 rounded-xl text-center text-xs font-bold bg-sky-500 text-white">
+                    Para Casa
+                </button>
+                <button onclick="switchMainTab('empresarial'); toggleMobileMenu()" class="px-3 py-2.5 rounded-xl text-center text-xs font-bold bg-slate-800 text-slate-300">
+                    Para Empresa
+                </button>
+            </div>
+            <a href="#planos" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sky-400 font-medium py-1">Planos</a>
+            <a href="#vantagens" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sky-400 font-medium py-1">Vantagens</a>
+            <a href="#cobertura" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sky-400 font-medium py-1">Rede no ABC</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sky-400 font-medium py-1">Perguntas Frequentes</a>
+            <a href="https://wa.me/551143807748" target="_blank" class="w-full bg-sky-500 text-white text-center py-3 rounded-xl font-bold block">
+                Falar com Atendente
+            </a>
+        </div>
+    </header>
+
+    <!-- CONTAINER VISÃO RESIDENCIAL / B2C -->
+    <div id="view-residencial">
+        <!-- HERO SECTION RESIDENCIAL -->
+        <section class="relative hero-gradient py-16 lg:py-24 border-b border-slate-800/60 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <!-- ESQUERDA: TEXTO E VIABILIDADE -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-semibold">
+                            <i data-lucide="award" class="w-4 h-4"></i> ELEITO O MELHOR PROVEDOR DO ABC 2026
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
+                            Ultravelocidade <br class="hidden sm:inline">
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-400">100% Fibra Óptica</span> no ABC
+                        </h1>
+
+                        <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                            Conexão estável para jogar online, trabalhar em home office e assistir filmes em 4K sem travamentos. Atendimento humanizado e rápido em Santo André, São Bernardo, Diadema, Mauá e Ribeirão Pires.
+                        </p>
+
+                        <!-- CONSULTA DE COBERTURA / CEP WIDGET -->
+                        <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-2xl space-y-3 max-w-xl mx-auto lg:mx-0">
+                            <div class="flex items-center gap-2 text-xs font-medium text-slate-400">
+                                <i data-lucide="search" class="w-4 h-4 text-sky-400"></i> Consulte a cobertura no seu endereço:
+                            </div>
+                            <form onsubmit="checkViability(event)" class="grid sm:grid-cols-12 gap-2">
+                                <div class="sm:col-span-5">
+                                    <select id="city-select" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-sky-500">
+                                        <option value="">Selecione sua cidade...</option>
+                                        <option value="Santo André">Santo André</option>
+                                        <option value="São Bernardo do Campo">São Bernardo do Campo</option>
+                                        <option value="Diadema">Diadema</option>
+                                        <option value="Mauá">Mauá</option>
+                                        <option value="Ribeirão Pires">Ribeirão Pires</option>
+                                    </select>
+                                </div>
+                                <div class="sm:col-span-4">
+                                    <input type="text" id="cep-input" inputmode="numeric" autocomplete="postal-code" maxlength="9" oninput="maskCep(this)" placeholder="Seu CEP (ex: 09000-000)" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-sky-500">
+                                </div>
+                                <div class="sm:col-span-3">
+                                    <button type="submit" id="cep-submit" class="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-2.5 px-4 rounded-xl text-sm transition shadow-lg shadow-orange-500/20 flex items-center justify-center gap-1">
+                                        <span id="cep-submit-label">Verificar</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <div id="viability-result" class="hidden text-xs font-semibold pt-1 leading-relaxed"></div>
+                        </div>
+
+                        <!-- BADGES RÁPIDOS -->
+                        <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-6 text-xs font-semibold text-slate-400">
+                            <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Instalação Grátis</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Wi-Fi Dual Band Incluso</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Sem Letras Miúdas</span>
+                        </div>
+                    </div>
+
+                    <!-- DIREITA: CARD COMBO MAIS VENDIDO -->
+                    <div class="lg:col-span-5">
+                        <div class="glass-card rounded-3xl p-6 sm:p-8 relative border-2 border-sky-500/30 shadow-2xl shadow-sky-500/10">
+                            <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[11px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md">
+                                MAIS VENDIDO
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-3 bg-sky-500/10 rounded-2xl text-sky-400">
+                                        <i data-lucide="tv" class="w-7 h-7"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-bold text-sky-400 uppercase tracking-wider block">PANDA FIBRA 500MB + TV FULL</span>
+                                        <h3 class="text-2xl font-black text-white">Panda TV Full+</h3>
+                                    </div>
+                                </div>
+
+                                <div class="py-2">
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-5xl font-black text-white">500</span>
+                                        <span class="text-xl font-bold text-sky-400">MB</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mt-1">+ Panda TV Full+ (100 canais Full HD)</p>
+                                </div>
+
+                                <ul class="space-y-2.5 text-xs text-slate-300 py-3 border-y border-slate-800">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Panda Livros e Panda Revistas</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Fibra Óptica de 500 MB de alta estabilidade</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Wi-Fi High Performance Incluso</li>
+                                </ul>
+
+                                <div class="bg-slate-900/80 p-4 rounded-2xl flex items-center justify-between">
+                                    <div>
+                                        <span class="text-[11px] text-slate-400 block">Por apenas</span>
+                                        <span class="text-3xl font-black text-white">R$ 124<span class="text-sm font-normal text-slate-400">,90/mês</span></span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 bg-slate-800 px-2.5 py-1 rounded-lg">Fidelidade 12m</span>
+                                </div>
+
+                                <button onclick="openWhatsappPlan('PANDA FIBRA 500MB + TV FULL', '500MB Fibra Óptica', 'Panda Livros, Panda Revistas', 'Panda TV Full+ (100 canais Full HD)', 'R$ 124,90', 'Fidelidade de 12 meses\nMulta proporcional R$ 149,88\nApós 12 meses: Sem fidelidade por R$ 137,39')" class="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold py-3.5 rounded-xl text-center block shadow-lg shadow-orange-500/25 transition cursor-pointer">
+                                    Quero Assinar Este Combo <i data-lucide="chevron-right" class="w-4 h-4 inline"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE PLANOS DE PREÇO -->
+        <section id="planos" class="py-20 bg-slate-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto space-y-3 mb-10">
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">Catálogo Completo de Planos Panda Fibra</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Selecione uma categoria para filtrar ou navegue pelas nossas opções 100% fibra óptica com os melhores preços do ABC.</p>
+                    
+                    <!-- TAB FILTER PLANOS -->
+                    <div class="pt-4 flex flex-wrap justify-center gap-2">
+                        <button onclick="filterPlanCategory('all')" id="btn-cat-all" class="px-5 py-2.5 rounded-xl font-bold text-xs bg-sky-500 text-white shadow transition">
+                            Todos os Planos (6)
+                        </button>
+                        <button onclick="filterPlanCategory('basic')" id="btn-cat-basic" class="px-5 py-2.5 rounded-xl font-bold text-xs bg-slate-950 text-slate-400 hover:text-white border border-slate-800 transition">
+                            Apenas Internet
+                        </button>
+                        <button onclick="filterPlanCategory('zapping-tv')" id="btn-cat-zapping-tv" class="px-5 py-2.5 rounded-xl font-bold text-xs bg-slate-950 text-slate-400 hover:text-white border border-slate-800 transition">
+                            Internet + TV
+                        </button>
+                        <button onclick="filterPlanCategory('gamer')" id="btn-cat-gamer" class="px-5 py-2.5 rounded-xl font-bold text-xs bg-slate-950 text-slate-400 hover:text-white border border-slate-800 transition">
+                            Gamer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARDS DE PLANOS RESIDENCIAIS -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="plans-container">
+                    <!-- PLANO 1: PANDA FIBRA BASIC - 300MB -->
+                    <div class="plan-card glass-card rounded-3xl p-6 border border-slate-800 hover:border-sky-500/50 transition duration-300 flex flex-col justify-between" data-category="basic">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-wider block">BASIC</span>
+                            <h3 class="text-xl font-black text-white mt-1">PANDA FIBRA BASIC - 300MB</h3>
+                            <div class="py-3">
+                                <span class="text-4xl font-black text-white">300</span>
+                                <span class="text-lg font-bold text-sky-400">MB</span>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-6 border-t border-slate-800/80 pt-4">
+                                <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4 text-sky-400"></i> Fibra Óptica de 300 MB</li>
+                                <li class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i> Panda Livros, Panda Revistas</li>
+                                <li class="flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4 text-sky-400"></i> Panda Vantagens</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Wi-Fi Dual Band Incluso</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <div class="text-3xl font-black text-white">R$ 69,90<span class="text-xs font-normal text-slate-400"> /mês</span></div>
+                                <p class="text-[10px] text-slate-400 mt-1">Fidelidade de 12 meses. Multa proporcional R$ 240,00.</p>
+                            </div>
+                            <button onclick="openWhatsappPlan('PANDA FIBRA BASIC - 300MB', '300MB Fibra Óptica', 'Panda Livros, Panda Revistas, Panda Vantagens', 'Não incluso', 'R$ 69,90', 'Fidelidade de 12 meses\nMulta proporcional R$ 240,00\nApós 12 meses: Sem fidelidade por R$ 89,90')" class="w-full bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-200 font-bold py-3 rounded-xl text-center block text-xs transition cursor-pointer">
+                                Assinar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PLANO 2: PANDA FIBRA BASIC - 400MB -->
+                    <div class="plan-card glass-card rounded-3xl p-6 border border-slate-800 hover:border-sky-500/50 transition duration-300 flex flex-col justify-between" data-category="basic">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-wider block">BASIC</span>
+                            <h3 class="text-xl font-black text-white mt-1">PANDA FIBRA BASIC - 400MB</h3>
+                            <div class="py-3">
+                                <span class="text-4xl font-black text-white">400</span>
+                                <span class="text-lg font-bold text-sky-400">MB</span>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-6 border-t border-slate-800/80 pt-4">
+                                <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4 text-sky-400"></i> Fibra Óptica de 400 MB</li>
+                                <li class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i> Panda Livros, Panda Revistas</li>
+                                <li class="flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4 text-sky-400"></i> Panda Vantagens</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Wi-Fi Dual Band Incluso</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <div class="text-3xl font-black text-white">R$ 79,90<span class="text-xs font-normal text-slate-400"> /mês</span></div>
+                                <p class="text-[10px] text-slate-400 mt-1">Fidelidade de 12 meses. Multa proporcional R$ 240,00.</p>
+                            </div>
+                            <button onclick="openWhatsappPlan('PANDA FIBRA BASIC - 400MB', '400MB Fibra Óptica', 'Panda Livros, Panda Revistas, Panda Vantagens', 'Não incluso', 'R$ 79,90', 'Fidelidade de 12 meses\nMulta proporcional R$ 240,00\nApós 12 meses: Sem fidelidade por R$ 99,90')" class="w-full bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-200 font-bold py-3 rounded-xl text-center block text-xs transition cursor-pointer">
+                                Assinar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PLANO 3: PANDA FIBRA BASIC - 600MB -->
+                    <div class="plan-card glass-card rounded-3xl p-6 border border-slate-800 hover:border-sky-500/50 transition duration-300 flex flex-col justify-between" data-category="basic">
+                        <!-- Omitido para não estender demais, igual ao seu código original -->
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-wider block">BASIC</span>
+                            <h3 class="text-xl font-black text-white mt-1">PANDA FIBRA BASIC - 600MB</h3>
+                            <div class="py-3">
+                                <span class="text-4xl font-black text-white">600</span>
+                                <span class="text-lg font-bold text-sky-400">MB</span>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-6 border-t border-slate-800/80 pt-4">
+                                <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4 text-sky-400"></i> Fibra Óptica de 600 MB</li>
+                                <li class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i> Panda Livros, Panda Revistas</li>
+                                <li class="flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4 text-sky-400"></i> Panda Vantagens</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Wi-Fi Dual Band Incluso</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <div class="text-3xl font-black text-white">R$ 99,90<span class="text-xs font-normal text-slate-400"> /mês</span></div>
+                                <p class="text-[10px] text-slate-400 mt-1">Fidelidade de 12 meses. Multa proporcional R$ 239,76.</p>
+                            </div>
+                            <button onclick="openWhatsappPlan('PANDA FIBRA BASIC - 600MB', '600MB Fibra Óptica', 'Panda Livros, Panda Revistas, Panda Vantagens', 'Não incluso', 'R$ 99,90', 'Fidelidade de 12 meses\nMulta proporcional R$ 239,76\nApós 12 meses: Sem fidelidade por R$ 119,88')" class="w-full bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-200 font-bold py-3 rounded-xl text-center block text-xs transition cursor-pointer">
+                                Assinar Agora
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- PLANO 4: PANDA FIBRA BASIC 2 - 800MB -->
+                    <div class="plan-card glass-card rounded-3xl p-6 border border-slate-800 hover:border-sky-500/50 transition duration-300 flex flex-col justify-between" data-category="basic">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-wider block">BASIC 2</span>
+                            <h3 class="text-xl font-black text-white mt-1">PANDA FIBRA BASIC 2 - 800MB</h3>
+                            <div class="py-3">
+                                <span class="text-4xl font-black text-white">800</span>
+                                <span class="text-lg font-bold text-sky-400">MB</span>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-6 border-t border-slate-800/80 pt-4">
+                                <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4 text-sky-400"></i> Fibra Óptica de 800 MB</li>
+                                <li class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i> Panda Livros, Panda Revistas</li>
+                                <li class="flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4 text-sky-400"></i> Panda Vantagens</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Wi-Fi Dual Band Incluso</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <div class="text-3xl font-black text-white">R$ 109,90<span class="text-xs font-normal text-slate-400"> /mês</span></div>
+                                <p class="text-[10px] text-slate-400 mt-1">Fidelidade de 12 meses. Multa proporcional R$ 263,76.</p>
+                            </div>
+                            <button onclick="openWhatsappPlan('PANDA FIBRA BASIC 2 - 800MB', '800MB Fibra Óptica', 'Panda Livros, Panda Revistas, Panda Vantagens', 'Não incluso', 'R$ 109,90', 'Fidelidade de 12 meses\nMulta proporcional R$ 263,76\nApós 12 meses: Sem fidelidade por R$ 131,88')" class="w-full bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-200 font-bold py-3 rounded-xl text-center block text-xs transition cursor-pointer">
+                                Assinar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PLANO 5: PANDA FIBRA GAME - 700MB GAMER -->
+                    <div class="plan-card glass-card rounded-3xl p-6 border-2 border-emerald-500/50 relative flex flex-col justify-between shadow-xl shadow-emerald-500/10" data-category="gamer">
+                        <div class="absolute -top-3 right-6 bg-emerald-500 text-slate-950 text-[10px] font-black uppercase px-3 py-0.5 rounded-full">
+                            EXITLAG INCLUSO
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">GAMER EDITION</span>
+                            <h3 class="text-xl font-black text-white mt-1">PANDA FIBRA GAME - 700MB</h3>
+                            <div class="py-3">
+                                <span class="text-4xl font-black text-white">700</span>
+                                <span class="text-lg font-bold text-emerald-400">MB</span>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-6 border-t border-slate-800/80 pt-4">
+                                <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4 text-emerald-400"></i> Fibra Óptica de 700 MB</li>
+                                <li class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-emerald-400"></i> ExitLag Otimizado</li>
+                                <li class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i> Panda Livros, Panda Revistas</li>
+                                <li class="flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4 text-sky-400"></i> Panda Vantagens</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <div class="text-3xl font-black text-white">R$ 119,90<span class="text-xs font-normal text-slate-400"> /mês</span></div>
+                                <p class="text-[10px] text-slate-400 mt-1">Fidelidade de 12 meses. Multa proporcional R$ 719,40.</p>
+                            </div>
+                            <button onclick="openWhatsappPlan('PANDA FIBRA GAME - 700MB', '700MB Fibra Óptica', 'ExitLag, Panda Livros, Panda Revistas, Panda Vantagens', 'Não incluso', 'R$ 119,90', 'Fidelidade de 12 meses\nMulta proporcional R$ 719,40\nApós 12 meses: Sem fidelidade por R$ 179,85')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3 rounded-xl text-center block text-xs transition cursor-pointer">
+                                Assinar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PLANO 6: PANDA FIBRA 500MB + TV FULL -->
+                    <div class="plan-card glass-card rounded-3xl p-6 border-2 border-sky-500 relative flex flex-col justify-between shadow-xl shadow-sky-500/10" data-category="zapping-tv">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-500 text-white text-[10px] font-black uppercase px-3 py-0.5 rounded-full">
+                            POPULAR
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-wider block">PANDA TV FULL</span>
+                            <h3 class="text-xl font-black text-white mt-1">PANDA FIBRA 500MB + TV FULL</h3>
+                            <div class="py-3">
+                                <span class="text-4xl font-black text-white">500</span>
+                                <span class="text-lg font-bold text-sky-400">MB + TV FULL</span>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-6 border-t border-slate-800/80 pt-4">
+                                <li class="flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4 text-sky-400"></i> Fibra Óptica de 500 MB</li>
+                                <li class="flex items-center gap-2"><i data-lucide="tv" class="w-4 h-4 text-sky-400"></i> Panda TV Full+ (100 canais Full HD)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i> Panda Livros, Panda Revistas</li>
+                                <li class="flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4 text-sky-400"></i> Panda Vantagens</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <div class="text-3xl font-black text-white">R$ 124,90<span class="text-xs font-normal text-slate-400"> /mês</span></div>
+                                <p class="text-[10px] text-slate-400 mt-1">Fidelidade de 12 meses. Multa proporcional R$ 149,88.</p>
+                            </div>
+                            <button onclick="openWhatsappPlan('PANDA FIBRA 500MB + TV FULL', '500MB Fibra Óptica', 'Panda Livros, Panda Revistas', 'Panda TV Full+ (100 canais Full HD)', 'R$ 124,90', 'Fidelidade de 12 meses\nMulta proporcional R$ 149,88\nApós 12 meses: Sem fidelidade por R$ 137,39')" class="w-full bg-sky-500 hover:bg-sky-400 text-white font-extrabold py-3 rounded-xl text-center block text-xs transition cursor-pointer">
+                                Assinar Agora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE VANTAGENS / DIFERENCIAIS -->
+        <section id="vantagens" class="py-20 bg-slate-950 border-t border-b border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest block">POR QUE A PANDA FIBRA?</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                        Tecnologia avançada com atendimento humano de verdade
+                    </h2>
+                </div>
+
+                <!-- GRID COM OS 4 DIFERENCIAIS -->
+                <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-sky-500/40 transition duration-300 space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">100% Fibra Óptica</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        A fibra vai do nosso POP direto para dentro da sua casa, garantindo velocidade máxima sem interferência de chuva ou vento.
+                    </p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-sky-500/40 transition duration-300 space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7" aria-hidden="true"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Wi-Fi Dual Band</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Roteadores de alta capacidade dual band (2.4GHz e 5GHz) instalados estrategicamente para cobrir todos os cômodos.
+                    </p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-sky-500/40 transition duration-300 space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7" aria-hidden="true"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Suporte 24/7 do ABC</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Equipe técnica local dedicada. Chega de esperar horas no telefone ou falar com robôs confusos.
+                    </p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-sky-500/40 transition duration-300 space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Instalação Grátis</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Agendamento rápido para ativação da sua internet sem cobrança de taxa de adesão ou visita inicial.
+                    </p>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cobertura" class="py-20 bg-slate-900/40 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+                <div class="max-w-2xl mx-auto space-y-3">
+                    <h2 class="text-3xl font-black text-white">Cobertura no Grande ABC</h2>
+                    <p class="text-slate-400 text-sm">Presente nas principais cidades da região com fibra óptica de ponta a ponta.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-bold text-slate-300">
+                    <span class="bg-slate-900 border border-slate-800 px-5 py-3 rounded-2xl flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i> Santo André</span>
+                    <span class="bg-slate-900 border border-slate-800 px-5 py-3 rounded-2xl flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i> São Bernardo do Campo</span>
+                    <span class="bg-slate-900 border border-slate-800 px-5 py-3 rounded-2xl flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i> Diadema</span>
+                    <span class="bg-slate-900 border border-slate-800 px-5 py-3 rounded-2xl flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i> Mauá</span>
+                    <span class="bg-slate-900 border border-slate-800 px-5 py-3 rounded-2xl flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i> Ribeirão Pires</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-20 bg-slate-950 border-t border-slate-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl font-black text-white">Perguntas Frequentes</h2>
+                    <p class="text-slate-400 text-sm">Tire suas dúvidas sobre a contratação e instalação Panda Fibra.</p>
+                </div>
+                <div class="space-y-4 text-left">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h4 class="font-bold text-white text-base">Como funciona a instalação?</h4>
+                        <p class="text-slate-400 text-xs sm:text-sm mt-2">A instalação é agendada conforme a sua disponibilidade e realizada por técnicos especializados com equipamentos inclusos.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h4 class="font-bold text-white text-base">O que é a Panda TV nos planos?</h4>
+                        <p class="text-slate-400 text-xs sm:text-sm mt-2">É a plataforma de TV por streaming que permite assistir aos canais com sinal digital e alta definição diretamente na sua Smart TV ou dispositivo móvel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTAINER VISÃO EMPRESARIAL / B2B (ADICIONADO E RECRIADO) -->
+    <div id="view-empresarial" style="display: none;" class="bg-slate-950 min-h-screen pb-20">
+        
+        <!-- Header B2B -->
+        <div class="text-center pt-16 pb-12 px-4">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-sky-400 text-xs font-semibold shadow-inner">
+                <i data-lucide="globe" class="w-4 h-4"></i> Internet 100% fibra óptica empresarial
+            </span>
+            <h1 class="text-4xl md:text-5xl font-black text-white mt-6 mb-4 tracking-tight">
+                Monte seu plano <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">sob medida</span>
+            </h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+                Configure velocidade, recursos e contrato em minutos. Sem pegadinhas, sem letras miúdas.
+            </p>
+        </div>
+
+        <!-- Box Informativo B2B -->
+        <div class="max-w-5xl mx-auto px-4 mb-12">
+            <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 md:p-8 text-center md:text-left shadow-lg">
+                <h3 class="text-sky-400 font-bold mb-2">Internet fibra empresarial em Santo André e no ABC</h3>
+                <p class="text-xs md:text-sm text-slate-300 mb-4 font-semibold">Conectividade para empresas com suporte 24h, baixa latência e alta estabilidade.</p>
+                <p class="text-xs text-slate-400 leading-relaxed max-w-4xl">
+                    A Panda Network atende Santo André, São Bernardo do Campo, Diadema, Mauá e Ribeirão Pires com internet fibra empresarial, IP fixo, opções de SLA e recursos de contingência para manter sua operação sempre ativa.
+                </p>
+            </div>
+        </div>
+
+        <!-- Stepper -->
+        <div class="flex items-center justify-center max-w-3xl mx-auto mb-10 px-4 text-[10px] md:text-xs font-bold text-slate-400">
+            <div class="flex items-center text-sky-400">
+                <span class="w-6 h-6 rounded-full bg-sky-500 text-white flex items-center justify-center mr-1.5 shadow-[0_0_10px_rgba(14,165,233,0.5)]">1</span> Passo 1: Velocidade
+            </div>
+            <div class="flex-1 border-t border-slate-700 mx-2 md:mx-4"></div>
+            <div class="flex items-center">
+                <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-500 flex items-center justify-center mr-1.5">2</span> Passo 2: Recursos
+            </div>
+            <div class="flex-1 border-t border-slate-700 mx-2 md:mx-4"></div>
+            <div class="flex items-center">
+                <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-500 flex items-center justify-center mr-1.5">3</span> Passo 3: Contrato
+            </div>
+        </div>
+
+        <!-- Configuração Grid -->
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-8 px-4">
+            
+            <!-- Coluna Esquerda: Formulário de Configuração -->
+            <div class="lg:col-span-8 space-y-10">
+                
+                <!-- Velocidade -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-1">Qual a velocidade ideal para sua empresa?</h3>
+                    <p class="text-xs text-slate-400 mb-4">Ajuste conforme o número de usuários e tipo de uso do seu negócio.</p>
+                    
+                    <div class="glass-card p-8 rounded-2xl border border-slate-800 text-center">
+                        <div class="text-6xl font-black text-white mb-1" id="b2b-speed-display">650 <span class="text-3xl text-sky-400">Mega</span></div>
+                        <p class="text-xs text-slate-400 mb-8">Alta demanda, tráfego intenso e filiais</p>
+                        
+                        <input type="range" min="300" max="1000" step="50" value="650" id="b2b-speed-slider" class="w-full mb-4" oninput="updateB2BSummary()">
+                        
+                        <div class="flex justify-between text-[10px] font-bold text-slate-500">
+                            <span>300M</span>
+                            <span>450M</span>
+                            <span>650M</span>
+                            <span>800M</span>
+                            <span>1000M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recursos Adicionais -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-1">Selecione os recursos adicionais</h3>
+                    <p class="text-xs text-slate-400 mb-4">Personalize o nível de disponibilidade da sua rede.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <!-- Card 1 -->
+                        <label class="block relative glass-card p-5 rounded-xl border border-slate-700 cursor-pointer hover:border-sky-500/50 transition">
+                            <input type="checkbox" id="b2b-ip" class="absolute top-5 left-4 w-4 h-4 b2b-checkbox text-sky-500 bg-slate-900 border-slate-600 rounded focus:ring-sky-500" onchange="updateB2BSummary()">
+                            <div class="pl-8">
+                                <h4 class="text-white font-bold text-sm mb-1 flex items-center gap-2"><i data-lucide="server" class="w-4 h-4 text-sky-400"></i> IP Fixo V4 Dedicado</h4>
+                                <p class="text-[10px] text-slate-400 leading-relaxed">Acesso remoto seguro, servidores e sistemas de monitoramento.</p>
+                            </div>
+                        </label>
+
+                        <!-- Card 2 -->
+                        <label class="block relative glass-card p-5 rounded-xl border border-slate-700 cursor-pointer hover:border-sky-500/50 transition">
+                            <input type="checkbox" id="b2b-sla" class="absolute top-5 left-4 w-4 h-4 b2b-checkbox text-sky-500 bg-slate-900 border-slate-600 rounded focus:ring-sky-500" onchange="updateB2BSummary()">
+                            <div class="pl-8">
+                                <h4 class="text-white font-bold text-sm mb-1 flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-sky-400"></i> SLA de Reparo Prioritário</h4>
+                                <p class="text-[10px] text-slate-400 leading-relaxed">Atendimento em até 4 horas garantido em contrato.</p>
+                            </div>
+                        </label>
+
+                        <!-- Card 3 -->
+                        <label class="block relative glass-card p-5 rounded-xl border border-slate-700 cursor-pointer hover:border-sky-500/50 transition">
+                            <input type="checkbox" id="b2b-router" class="absolute top-5 left-4 w-4 h-4 b2b-checkbox text-sky-500 bg-slate-900 border-slate-600 rounded focus:ring-sky-500" onchange="updateB2BSummary()">
+                            <div class="pl-8">
+                                <h4 class="text-white font-bold text-sm mb-1 flex items-center gap-2"><i data-lucide="router" class="w-4 h-4 text-sky-400"></i> Roteador Corporativo High-Capacity</h4>
+                                <p class="text-[10px] text-slate-400 leading-relaxed">Equipamento corporativo para múltiplas conexões simultâneas.</p>
+                            </div>
+                        </label>
+
+                        <!-- Card 4 -->
+                        <label class="block relative glass-card p-5 rounded-xl border border-slate-700 cursor-pointer hover:border-sky-500/50 transition">
+                            <input type="checkbox" id="b2b-backup" class="absolute top-5 left-4 w-4 h-4 b2b-checkbox text-sky-500 bg-slate-900 border-slate-600 rounded focus:ring-sky-500" onchange="updateB2BSummary()">
+                            <div class="pl-8">
+                                <h4 class="text-white font-bold text-sm mb-1 flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-sky-400"></i> Link de Backup / Redundância</h4>
+                                <p class="text-[10px] text-slate-400 leading-relaxed">Segunda via de acesso para 100% de disponibilidade.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Dados da Empresa -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-1">Dados para recebimento de proposta corporativa</h3>
+                    <p class="text-xs text-slate-400 mb-4">Receba a solução oficial em seu e-mail ou WhatsApp corporativo.</p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 mb-1">Nome da Empresa / Razão Social</label>
+                            <input type="text" id="b2b-empresa" placeholder="Sua Empresa LTDA" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 mb-1">CNPJ</label>
+                            <input type="text" id="b2b-cnpj" placeholder="00.000.000/0001-00" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 mb-1">Nome do Responsável</label>
+                            <input type="text" id="b2b-nome" placeholder="Seu nome" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 mb-1">WhatsApp de Contato</label>
+                            <input type="text" id="b2b-zap" placeholder="(11) 99999-9999" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Coluna Direita: Resumo Fixo (Sticky) -->
+            <div class="lg:col-span-4">
+                <div class="glass-card p-6 rounded-2xl border border-slate-700 sticky top-28 shadow-xl">
+                    <div class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">Proposta Personalizada</div>
+                    <div class="text-3xl font-black text-white mb-3">Valor sob consulta</div>
+                    <p class="text-[11px] text-slate-400 mb-6 pb-6 border-b border-slate-800 leading-relaxed">
+                        Planos empresariais possuem condições personalizadas e emissão de NF faturada CNPJ.
+                    </p>
+                    
+                    <ul class="space-y-4 text-xs mb-8">
+                        <li class="flex justify-between items-center">
+                            <span class="text-slate-400">Velocidade selecionada:</span>
+                            <span class="font-bold text-white text-sm" id="summary-speed">650 Mega</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-slate-400">IP Fixo Dedicado:</span>
+                            <span class="font-bold text-sky-400" id="summary-ip">Não</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-slate-400">SLA Atendimento:</span>
+                            <span class="font-bold text-sky-400" id="summary-sla">Padrão</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-slate-400">Hardware Corporativo:</span>
+                            <span class="font-bold text-sky-400" id="summary-router">Padrão</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-slate-400">Link de Backup:</span>
+                            <span class="font-bold text-sky-400" id="summary-backup">Não</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="sendB2BWhatsApp()" class="w-full bg-sky-500 hover:bg-sky-400 text-white font-extrabold py-3.5 rounded-xl text-center shadow-lg shadow-sky-500/25 transition cursor-pointer flex items-center justify-center gap-2">
+                        Solicitar Proposta via WhatsApp <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <img src="logo-panda.png" alt="Panda Fibra" onerror="logoFallback(this)" class="h-8 w-auto max-w-[170px] object-contain object-left">
+                <span class="text-lg font-black text-white">PANDA<span class="text-sky-400">FIBRA</span></span>
+            </div>
+            <p class="text-slate-500 text-xs text-center md:text-left">
+                &copy; 2026 Panda Fibra & Network. Todos os direitos reservados. Atendimento no Grande ABC.
+            </p>
+            <div class="flex gap-4 text-slate-400 text-xs">
+                <a href="https://wa.me/551143807748" target="_blank" class="hover:text-sky-400 transition">Atendimento WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Inicializa Lucide Icons
+        lucide.createIcons();
+
+        // Toggle Menu Mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Alterar Visão Residencial / B2B
+        function switchMainTab(mode) {
+            const btnRes = document.getElementById('nav-btn-residencial');
+            const btnEmp = document.getElementById('nav-btn-empresarial');
+            const viewRes = document.getElementById('view-residencial');
+            const viewEmp = document.getElementById('view-empresarial');
+            
+            if (mode === 'residencial') {
+                btnRes?.classList.add('bg-sky-500', 'text-white');
+                btnRes?.classList.remove('text-slate-400');
+                btnEmp?.classList.remove('bg-sky-500', 'text-white');
+                btnEmp?.classList.add('text-slate-400');
+                viewRes.style.display = 'block';
+                viewEmp.style.display = 'none';
+            } else {
+                btnEmp?.classList.add('bg-sky-500', 'text-white');
+                btnEmp?.classList.remove('text-slate-400');
+                btnRes?.classList.remove('bg-sky-500', 'text-white');
+                btnRes?.classList.add('text-slate-400');
+                viewRes.style.display = 'none';
+                viewEmp.style.display = 'block';
+            }
+        }
+
+        // Filtro de Categoria de Planos (Residencial)
+        function filterPlanCategory(cat) {
+            const cards = document.querySelectorAll('.plan-card');
+            const btns = document.querySelectorAll('[id^="btn-cat-"]');
+            
+            btns.forEach(btn => {
+                btn.classList.remove('bg-sky-500', 'text-white');
+                btn.classList.add('bg-slate-950', 'text-slate-400');
+            });
+            
+            const activeBtn = document.getElementById(`btn-cat-${cat}`);
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-slate-950', 'text-slate-400');
+                activeBtn.classList.add('bg-sky-500', 'text-white');
+            }
+            
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        /* =====================================================================
+           CONFIGURACAO GERAL
+           ===================================================================== */
+        const WHATSAPP_NUMERO = '551143807748';
+
+        // Se o WhatsApp Desktop do Windows continuar comendo os emojis,
+        // troque para false. A mensagem passa a usar marcadores » e - , que
+        // sobrevivem a qualquer conversao de codificacao.
+        const USAR_EMOJIS = true;
+
+        // Acesse o site com ?debug=1 no final da URL para VER o link gerado
+        // em vez de abrir o WhatsApp. Serve para conferir a codificacao.
+        const DEBUG_WHATSAPP = new URLSearchParams(window.location.search).has('debug');
+
+        /* ---------------------------------------------------------------------
+           Emojis por code point: o arquivo fonte fica 100% ASCII, entao nenhum
+           editor ou servidor consegue corromper. O segundo argumento e o
+           substituto seguro (tudo abaixo de U+00FF) quando USAR_EMOJIS = false.
+           --------------------------------------------------------------------- */
+        function ico(codePoint, alternativa) {
+            return USAR_EMOJIS ? String.fromCodePoint(codePoint) : alternativa;
+        }
+
+        const EMOJI = {
+            antena:     ico(0x1F4E1, '>>'), // 📡
+            foguete:    ico(0x1F680, '-'),  // 🚀
+            presente:   ico(0x1F381, '-'),  // 🎁
+            tv:         ico(0x1F4FA, '-'),  // 📺
+            telefone:   ico(0x260E,  '-'),  // ☎
+            dinheiro:   ico(0x1F4B0, '-'),  // 💰
+            alfinete:   ico(0x1F4CC, '-'),  // 📌
+            predio:     ico(0x1F3E2, '>>'), // 🏢
+            grafico:    ico(0x1F4C8, '-'),  // 📈
+            ferramenta: ico(0x1F6E0, '-'),  // 🛠
+            ciclo:      ico(0x1F504, '-'),  // 🔄
+            caderno:    ico(0x1F4D4, '-'),  // 📔
+            local:      ico(0x1F4CD, '>>'), // 📍
+            correio:    ico(0x1F4EE, '-'),  // 📮
+            casa:       ico(0x1F3E0, '-'),  // 🏠
+            ok:         ico(0x2705,  '+')   // ✅
+        };
+
+        /* ---------------------------------------------------------------------
+           Abertura do WhatsApp.
+           No computador usamos web.whatsapp.com em vez de wa.me: assim o link
+           NAO passa pelo protocolo whatsapp:// do Windows, que e justamente
+           onde os emojis eram convertidos para ISO-8859-1 e viravam "?".
+           No celular seguimos com wa.me, que abre o app direto.
+           --------------------------------------------------------------------- */
+        function abrirWhatsapp(mensagem) {
+            const texto = encodeURIComponent(mensagem);
+            const ehMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+
+            const url = ehMobile
+                ? 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + texto
+                : 'https://web.whatsapp.com/send?phone=' + WHATSAPP_NUMERO + '&text=' + texto;
+
+            if (DEBUG_WHATSAPP) {
+                console.log('[DEBUG] Mensagem:', mensagem);
+                console.log('[DEBUG] URL gerada:', url);
+                window.prompt('MODO DEBUG - link gerado (Ctrl+C para copiar):', url);
+                return;
+            }
+
+            window.open(url, '_blank');
+        }
+
+        /* ---------------------------------------------------------------------
+           LOGO: tenta varios nomes de arquivo e, se nenhum existir,
+           desenha um logo em texto para a pagina nunca ficar quebrada.
+           Coloque o nome correto do seu arquivo na PRIMEIRA posicao da lista.
+           --------------------------------------------------------------------- */
+        const LOGO_ARQUIVOS = [
+            'logo-panda.png',
+            'Logo Panda Mono.png',
+            'logo-panda-mono.png',
+            'logo.png',
+            'img/logo-panda.png',
+            'assets/logo-panda.png',
+            'images/logo-panda.png'
+        ];
+
+        function logoFallback(img) {
+            const tentativa = parseInt(img.dataset.tentativa || '0', 10);
+            if (tentativa < LOGO_ARQUIVOS.length) {
+                img.dataset.tentativa = String(tentativa + 1);
+                img.src = LOGO_ARQUIVOS[tentativa];
+                return;
+            }
+            img.onerror = null;
+            const texto = document.createElement('span');
+            texto.className = 'font-black tracking-tight text-white ' +
+                              (img.classList.contains('h-10') ? 'text-2xl' : 'text-xl');
+            texto.innerHTML = 'PANDA<span class="text-sky-400">FIBRA</span>';
+            img.replaceWith(texto);
+        }
+
+        function openWhatsappPlan(planName, internet, digital, tv, price, conditions) {
+            let msg = EMOJI.antena + ' *' + planName + '*\n\n';
+            msg += EMOJI.foguete  + ' *Internet:* ' + internet + '\n';
+            msg += EMOJI.presente + ' *Serviços Digitais:* ' + digital + '\n';
+            msg += EMOJI.tv       + ' *TV:* ' + tv + '\n';
+            msg += EMOJI.telefone + ' *Fixo:* Não incluso\n\n';
+            msg += EMOJI.dinheiro + ' *Valor promocional:* ' + price + '\n\n';
+            msg += EMOJI.alfinete + ' *Condições e Fidelidade:*\n' + conditions;
+
+            abrirWhatsapp(msg);
+        }
+
+        // B2B: Atualizar Resumo Dinâmico
+        function updateB2BSummary() {
+            const speed = document.getElementById('b2b-speed-slider').value;
+            const ip = document.getElementById('b2b-ip').checked;
+            const sla = document.getElementById('b2b-sla').checked;
+            const router = document.getElementById('b2b-router').checked;
+            const backup = document.getElementById('b2b-backup').checked;
+
+            // Atualiza o visor gigante do Slider
+            document.getElementById('b2b-speed-display').innerHTML = `${speed} <span class="text-3xl text-sky-400">Mega</span>`;
+
+            // Atualiza textos do card lateral
+            document.getElementById('summary-speed').textContent = `${speed} Mega`;
+            document.getElementById('summary-ip').textContent = ip ? 'Sim' : 'Não';
+            document.getElementById('summary-sla').textContent = sla ? 'Até 4h' : 'Padrão';
+            document.getElementById('summary-router').textContent = router ? 'High-Capacity' : 'Padrão';
+            document.getElementById('summary-backup').textContent = backup ? 'Sim' : 'Não';
+        }
+
+        // B2B: Enviar Pedido via WhatsApp (também com Unicode seguro)
+        function sendB2BWhatsApp() {
+            const speed = document.getElementById('b2b-speed-slider').value;
+            const ip = document.getElementById('b2b-ip').checked ? "Sim" : "Não";
+            const sla = document.getElementById('b2b-sla').checked ? "Prioritário (Até 4h)" : "Padrão";
+            const router = document.getElementById('b2b-router').checked ? "High-Capacity" : "Padrão";
+            const backup = document.getElementById('b2b-backup').checked ? "Sim" : "Não";
+
+            const empresa = document.getElementById('b2b-empresa').value || 'Não informado';
+            const cnpj = document.getElementById('b2b-cnpj').value || 'Não informado';
+            const nome = document.getElementById('b2b-nome').value || 'Não informado';
+            const zap = document.getElementById('b2b-zap').value || 'Não informado';
+
+            let msg = EMOJI.predio + ' *SOLICITAÇÃO DE PROPOSTA B2B (EMPRESARIAL)*\n\n';
+            msg += EMOJI.grafico    + ' *Velocidade Escolhida:* ' + speed + ' Mega\n';
+            msg += EMOJI.antena     + ' *IP Fixo Dedicado:* ' + ip + '\n';
+            msg += EMOJI.ferramenta + ' *SLA de Reparo:* ' + sla + '\n';
+            msg += EMOJI.antena     + ' *Roteador Corporativo:* ' + router + '\n';
+            msg += EMOJI.ciclo      + ' *Link de Backup:* ' + backup + '\n\n';
+            msg += EMOJI.caderno    + ' *DADOS DA EMPRESA*\n';
+            msg += 'Empresa: ' + empresa + '\n';
+            msg += 'CNPJ: ' + cnpj + '\n';
+            msg += 'Responsável: ' + nome + '\n';
+            msg += 'Contato: ' + zap + '\n';
+
+            abrirWhatsapp(msg);
+        }
+
+        /* =====================================================================
+           CONSULTA DE CEP / VIABILIDADE
+           ---------------------------------------------------------------------
+           Regra: só libera o atendimento se o CEP EXISTIR, pertencer a uma das
+           cidades atendidas E bater com a cidade que o cliente selecionou.
+           Fonte da verdade: API ViaCEP. Faixas de CEP ficam só como plano B
+           (quando a internet/API falha).
+           ===================================================================== */
+
+        // Chave = nome normalizado (sem acento, maiúsculo). Edite aqui para
+        // incluir/remover cidades atendidas.
+        const CIDADES_ATENDIDAS = {
+            'SANTO ANDRE':           { nome: 'Santo André',           uf: 'SP', inicio: 9000000, fim: 9299999 },
+            'SAO BERNARDO DO CAMPO': { nome: 'São Bernardo do Campo', uf: 'SP', inicio: 9600000, fim: 9899999 },
+            'DIADEMA':               { nome: 'Diadema',               uf: 'SP', inicio: 9900000, fim: 9999999 },
+            'MAUA':                  { nome: 'Mauá',                  uf: 'SP', inicio: 9300000, fim: 9399999 },
+            'RIBEIRAO PIRES':        { nome: 'Ribeirão Pires',        uf: 'SP', inicio: 9400000, fim: 9449999 }
+        };
+
+        // "São Bernardo do Campo" -> "SAO BERNARDO DO CAMPO"
+        function normalizarTexto(txt) {
+            return (txt || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .toUpperCase();
+        }
+
+        function apenasDigitos(txt) {
+            return (txt || '').replace(/\D/g, '');
+        }
+
+        // Máscara 00000-000 enquanto o usuário digita
+        function maskCep(input) {
+            let v = apenasDigitos(input.value).slice(0, 8);
+            if (v.length > 5) v = v.slice(0, 5) + '-' + v.slice(5);
+            input.value = v;
+        }
+
+        // Pinta a caixa de resposta. tipo: 'ok' | 'erro' | 'aviso' | 'carregando'
+        function mostrarResultado(tipo, html) {
+            const res = document.getElementById('viability-result');
+            const cores = {
+                ok: 'text-emerald-400',
+                erro: 'text-red-400',
+                aviso: 'text-amber-400',
+                carregando: 'text-sky-400'
+            };
+            res.className = 'text-xs font-semibold pt-1 leading-relaxed ' + (cores[tipo] || 'text-slate-300');
+            res.innerHTML = html;
+            try { lucide.createIcons(); } catch (e) {}
+        }
+
+        function travarBotao(travado) {
+            const btn = document.getElementById('cep-submit');
+            const label = document.getElementById('cep-submit-label');
+            if (!btn) return;
+            btn.disabled = travado;
+            if (label) label.textContent = travado ? 'Consultando...' : 'Verificar';
+        }
+
+        // Permite corrigir a cidade com 1 clique quando o CEP é de outra cidade atendida
+        function corrigirCidade(nomeCidade) {
+            const select = document.getElementById('city-select');
+            select.value = nomeCidade;
+            mostrarResultado('aviso', 'Cidade ajustada para <b>' + nomeCidade + '</b>. Clique em "Verificar" novamente.');
+        }
+
+        // Consulta o ViaCEP com timeout, para não deixar o usuário travado
+        async function buscarCep(cepDigitos) {
+            const controle = new AbortController();
+            const timer = setTimeout(() => controle.abort(), 8000);
+            try {
+                const resposta = await fetch('https://viacep.com.br/ws/' + cepDigitos + '/json/', {
+                    signal: controle.signal,
+                    cache: 'no-store'
+                });
+                if (!resposta.ok) throw new Error('HTTP ' + resposta.status);
+                return await resposta.json();
+            } finally {
+                clearTimeout(timer);
+            }
+        }
+
+        // Plano B (offline): confere só a faixa numérica do CEP
+        function cidadePelaFaixa(cepDigitos) {
+            const numero = parseInt(cepDigitos, 10);
+            for (const chave in CIDADES_ATENDIDAS) {
+                const c = CIDADES_ATENDIDAS[chave];
+                if (numero >= c.inicio && numero <= c.fim) return { chave: chave, dados: c };
+            }
+            return null;
+        }
+
+        async function checkViability(e) {
+            e.preventDefault();
+
+            const selectCidade = document.getElementById('city-select');
+            const cidadeEscolhida = selectCidade.value;
+            const cepDigitado = document.getElementById('cep-input').value;
+            const cepDigitos = apenasDigitos(cepDigitado);
+
+            // ---------- Validações locais ----------
+            if (!cidadeEscolhida) {
+                mostrarResultado('aviso', 'Selecione a sua cidade para continuar.');
+                return;
+            }
+            if (cepDigitos.length !== 8) {
+                mostrarResultado('aviso', 'Digite um CEP válido com 8 números (ex: 09900-000).');
+                return;
+            }
+            if (/^(\d)\1{7}$/.test(cepDigitos)) {
+                mostrarResultado('erro', 'Esse CEP não existe. Confira o número e tente de novo.');
+                return;
+            }
+
+            travarBotao(true);
+            mostrarResultado('carregando', 'Consultando a base dos Correios...');
+
+            let dadosCep = null;
+            let usouPlanoB = false;
+
+            try {
+                dadosCep = await buscarCep(cepDigitos);
+            } catch (erro) {
+                usouPlanoB = true;
+            }
+
+            // ---------- CEP inexistente ----------
+            if (!usouPlanoB && (!dadosCep || dadosCep.erro)) {
+                travarBotao(false);
+                mostrarResultado('erro',
+                    '<i data-lucide="x-circle" class="w-4 h-4 inline mr-1"></i> ' +
+                    'CEP <b>' + cepDigitado + '</b> não encontrado na base dos Correios. ' +
+                    'Verifique o número digitado.');
+                return;
+            }
+
+            // ---------- Descobre a cidade real do CEP ----------
+            let chaveCidadeCep, nomeCidadeCep, ufCidadeCep, enderecoCompleto = '';
+
+            if (usouPlanoB) {
+                const faixa = cidadePelaFaixa(cepDigitos);
+                if (!faixa) {
+                    travarBotao(false);
+                    mostrarResultado('erro',
+                        '<i data-lucide="wifi-off" class="w-4 h-4 inline mr-1"></i> ' +
+                        'Não conseguimos consultar o CEP agora e ele está fora das faixas que atendemos. ' +
+                        'Confira o CEP ou tente novamente em instantes.');
+                    return;
+                }
+                chaveCidadeCep = faixa.chave;
+                nomeCidadeCep = faixa.dados.nome;
+                ufCidadeCep = faixa.dados.uf;
+            } else {
+                chaveCidadeCep = normalizarTexto(dadosCep.localidade);
+                nomeCidadeCep = dadosCep.localidade;
+                ufCidadeCep = dadosCep.uf;
+                const rua = dadosCep.logradouro || '';
+                const bairro = dadosCep.bairro || '';
+                enderecoCompleto = [rua, bairro].filter(Boolean).join(' - ');
+            }
+
+            // ---------- Cidade fora da área de cobertura ----------
+            if (!CIDADES_ATENDIDAS[chaveCidadeCep]) {
+                travarBotao(false);
+                mostrarResultado('erro',
+                    '<i data-lucide="x-circle" class="w-4 h-4 inline mr-1"></i> ' +
+                    'O CEP <b>' + cepDigitado + '</b> pertence a <b>' + nomeCidadeCep + '/' + ufCidadeCep + '</b>, ' +
+                    'e ainda não temos cobertura nessa cidade.<br>' +
+                    '<span class="text-slate-400 font-medium">Atendemos Santo André, São Bernardo do Campo, Diadema, Mauá e Ribeirão Pires.</span>');
+                return;
+            }
+
+            // ---------- CEP existe e é atendido, mas é de outra cidade ----------
+            if (chaveCidadeCep !== normalizarTexto(cidadeEscolhida)) {
+                const nomeOficial = CIDADES_ATENDIDAS[chaveCidadeCep].nome;
+                travarBotao(false);
+                mostrarResultado('erro',
+                    '<i data-lucide="alert-triangle" class="w-4 h-4 inline mr-1"></i> ' +
+                    'Esse CEP é de <b>' + nomeOficial + '</b>, mas você selecionou <b>' + cidadeEscolhida + '</b>. ' +
+                    'Confira os dados antes de continuar. ' +
+                    '<button type="button" onclick="corrigirCidade(\'' + nomeOficial + '\')" ' +
+                    'class="underline text-sky-400 hover:text-sky-300">Corrigir para ' + nomeOficial + '</button>');
+                return;
+            }
+
+            // ---------- Tudo certo: libera o atendimento ----------
+            const nomeOficial = CIDADES_ATENDIDAS[chaveCidadeCep].nome;
+            const cepFormatado = cepDigitos.slice(0, 5) + '-' + cepDigitos.slice(5);
+
+            mostrarResultado('ok',
+                '<i data-lucide="check-circle" class="w-4 h-4 inline mr-1"></i> ' +
+                'Cobertura disponível em <b>' + nomeOficial + '</b>' +
+                (enderecoCompleto ? ' (' + enderecoCompleto + ')' : '') +
+                '! Redirecionando para o atendimento...');
+
+            let mensagem = EMOJI.local + ' *CONSULTA DE VIABILIDADE*\n\n';
+            mensagem += EMOJI.casa + ' *Cidade:* ' + nomeOficial + '/' + ufCidadeCep + '\n';
+            mensagem += EMOJI.correio + ' *CEP:* ' + cepFormatado + '\n';
+            if (enderecoCompleto) {
+                mensagem += EMOJI.alfinete + ' *Endereço:* ' + enderecoCompleto + '\n';
+            }
+            mensagem += '\nOlá! Confirmei a cobertura pelo site e gostaria de contratar a Panda Fibra.';
+
+            setTimeout(() => {
+                travarBotao(false);
+                abrirWhatsapp(mensagem);
+            }, 900);
+        }
+    </script>
+</body>
+</html>
